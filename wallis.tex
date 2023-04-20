@@ -1,0 +1,85 @@
+\subsection{Modellazione energetica}
+
+\subsubsection{Scenari: ipotesi}
+Tramite la metodologia descritta in appendice, otteniamo i seguenti risultati per i valori delle potenze installate delle tecnologie prese in analisi e della capacità massima dello storage:
+\begin{table}[H]
+	\caption{Progetto proposto per Wallis}
+	\centering
+	\begin{tabular}{llc}
+		\toprule
+		Tecnologia   & Potenza/Capacità Installata \\
+		\midrule
+		Solare       & \(\SI{9.185}{\MW}\)         \\
+		Eolico Offshore Palificato & \(\SI{1.254}{\MW}\) \\
+		WEC          & \(\SI{0.00}{\MW}\)         \\
+		Accumulatori & \(\SI{26.70}{\MWh}\)        \\
+		Potenza Accumulatori & \(\SI{6.1}{\MW}\)   \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:wallis_project}
+\end{table}
+
+Per l'isola di Wallis, dunque, l'energia solare è quella che risulta avere più successo, seguita dall'eolico e infine dall'energia da moto ondoso, che l'algoritmo esclude dalla soluzione ottimale.
+
+I motivi di questa esclusione si ritengono essere principalmente legati al fatto che rispetto al fotovoltaico e all'eolico (tecnologie ormai affermate con TRL pari a 9), il WEC, essendo stato sviluppato in tempi più recenti (TRL 6) presenta costi ancora troppo elevati per poter competere con le altre tecnologie.
+
+Analizzati criticamente i dati ottenuti, inizia la fase di ricerca del sito di installazione. 
+Non avendo la possibilità di recarsi in prima persona sul campo, si conduce un'analisi preliminare sui luoghi da escludere a priori: tra questi figurano sicuramente i terreni a ridosso dei villaggi, concentrati lungo la costa orientale dell'isola, a sud-ovest i laghi vulcanici e le terre che le circondano, considerate Tapu dalla popolazione, (su cui si tramandano storie e leggende di varia natura **meglio metterlo in un altro punto forse**), e la zona del Forte Tongano, circa al centro dell'isola, tra i siti più belli del Pacifico nonostante la scarsa valorizzazione, tra l'altro contesa da più famiglie, la cui gestione è spesso motivo di tensioni nella popolazione.
+Una volta esclusi questi terreni, al fine di avere il minor impatto ecologico possibile, vengono analizzate le zone già antropizzate dell'isola e tra queste è scelta l'area vicino all'aeroporto indicata in figura****. 
+
+Avendo accertato che quest'ultima risulta soddisfare i criteri di tipo ecologico-antropologico prefissati, si procede con la valutazione della potenza installabile. 
+Per mezzo del software HELIOSCOPE che, selezionata manualmente la zona di installazione, fornisce la potenza di fotovoltaico installabile in quel sito, si ricava che la zona scelta ha una superficie più che sufficiente per ospitare i pannelli per la potenza richiesta.
+Per quanto riguarda l'eolico, essendo una tecnologia più invasiva dal punto di vista sia visivo che sonoro, un possibile sito può essere indicato solo in un secondo momento, in seguito a un accesso diretto al campo, raccolta di dati e dialogo con la popolazione del luogo. 
+Viene tuttavia proposto un progetto di installazione, in questo momento testato in Taiwan dalla multinazionale danese Orsted, che, in un non così lontano futuro, potrebbe rivelarsi essere la soluzione ideale per Wallis.
+
+L'isola è circondata dalla barriera corallina, casa di una gamma vastissima di specie marine diverse, tra gli ecosistemi più ricchi in termini di biodiversità e non solo.
+Il cambiamento climatico e l'innalzamento della temperatura, però, provocano sempre più frequentemente lo sbiancamento dei coralli, e ciò minaccia la sopravvivenza dell'intero ecosistema. 
+A farne le spese non sono "solo" le centinaia di migliaia di specie marine il cui habitat naturale è la barriera corallina, ma anche milioni di persone il cui sostentamento dipende da queste specie, senza dimenticare che la presenza della barriera corallina protegge la costa da inondazioni e tempeste. 
+Dalla necessità da un lato di produrre energia in modo green e, dall'altro, di salvaguardare queste specie e il loro ecosistema, nasce l'idea di popolare di coralli le basi che permettono l'installazione delle turbine eoliche in mare.
+
+I coralli si trovano spontaneamente in acque superficiali, la cui temperatura molto elevata può causare il loro sbiancamento. 
+Ma nelle acque più profonde, dove sono installate le turbine, la temperatura si mantiene più bassa e stabile, grazie alla continua ricircolo di acqua più calda proveniente dalla superficie e di acqua più fresca dal fondale.
+
+Le fondamenta delle turbine offshore forniscono dunque un ambiente unico dove i coralli possono crescere, abbastanza vicini alla superficie in modo da ricevere sufficiente luce solare, ma senza essere esposti alle alte temperature. 
+Tutto ciò limita i rischi di sbiancamento dei coralli.
+Si tratta inoltre di un approccio non invasivo, in quanto per il popolamento sono collezionate le uova di coralli che si depositano a riva e che non sopravviverebbero altrimenti, lasciando intatti gli ecosistemi corallini già esistenti.
+
+Esistono ancora delle incertezze sul successo del progetto, quali l'ancoramento delle larve dei coralli nonostante le forti correnti o il loro prosperare sebbene la collocazione sia meno luminosa rispetto a quella usuale, ma i benefici che questa soluzione porterebbe superano di gran lunga i possibili aspetti negativi.
+
+Un'ultima riflessione è dedicata al WEC, per il quale, pur essendo sfavorito dall'algoritmo, è stata comunque presa in considerazione l'ipotesi di installazione. 
+A causa della presenza della barriera corallina che riduce mediamente del \(\SI{97}{\percent}\) la potenza dell'onda oceanica e dell'\(\SI{84}{\percent}\) la sua altezza, in caso l'installazione avvenisse nella laguna, il dispositivo risulterebbe inutile. 
+D'altro canto, invece, collocare il dispositivo al di là della barriera corallina risulta essere una scelta piuttosto rischiosa in quanto un eventuale guasto degli ormeggi si potrebbe tradurre in un serio danno alla barriera.
+
+\subsubsection{Scenari: risultati e indicatori}
+Implementando la soluzione proposta, si otterrebbe un uso delle energie rinnovabili del \(\SI{90.84}{\percent}\), con un costo energetico stimato annuo di \(\SI{1820240}{\EUR}\). \\
+\begin{figure}[ht]\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+				yshift = 1cm,
+				grid=both,
+				axis lines = left,
+				xlabel = {Mese},
+				ylabel = {Energia non rinnovabile usata [MW]},
+				date coordinates in=x,
+				date ZERO=2019-01-01,
+				table/col sep=comma,
+				% xticklabel=\month,
+				% xticklabel/.expanded=\dateticks,
+				% xticklabel style={rotate=90},
+				xticklabel=\pgfcalendarmonthshortname{\month},
+				% width=17cm,
+				% height=10cm,
+			]
+			\addplot[line width = 0.13mm, blue] table [
+					x=date,
+					y=diesel_used,
+					y expr=\thisrow{diesel_used}*1e-6,
+					col sep=comma,
+				] {PlotsData/wallis_balancing.csv};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Energia non rinnovabile usata}
+	\label{fig:not_fer}
+\end{figure}
+
+% TODO: FINIRE

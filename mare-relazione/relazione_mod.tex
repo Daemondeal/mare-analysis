@@ -1,0 +1,826 @@
+% Ricerca su Wallis e Lipari
+% Template usato: Stylish Article 2.2, LaTeX Template.
+% Licenza: CC BY-NC_SA 3.0 (https://creativecommons.org/licenses/by-nc-sa/3.0/)
+
+% Librerie Usate
+
+\documentclass[fleqn,10pt]{SelfArx} % Template 
+
+\usepackage[italian]{babel} 
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{eurosym}
+\usepackage{float}
+\usepackage{tikz}
+
+\usepgfplotslibrary{dateplot, statistics}
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+% Impostazioni per TikZ (Libreria per i diagrammi)
+\tikzstyle{phase} = [rectangle, rounded corners, minimum width=1cm, minimum height=0.5cm, text centered, draw=black, fill=red!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Impostazioni per siunitx (Libreria per le unità di misura)
+\DeclareSIUnit{\kWh}{kWh}
+\DeclareSIUnit{\MWh}{MWh}
+\DeclareSIUnit{\EUR}{\text{\euro}}
+\DeclareSIUnit{\ettari}{\text{ ettari}}
+\sisetup{
+  per-mode = fraction,
+  inter-unit-product = \ensuremath{{}\cdot{}},
+  locale = FR % Il locale francese dovrebbe essere uguale a quello italiano
+}
+
+% Impostazioni per pgfplots (Libreria per i grafici)
+\pgfplotsset{compat=1.16}
+
+% Colonne
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+
+% Colori
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+% Impostazioni per gli hyperlink
+\usepackage{hyperref} % Required for hyperlinks
+
+\hypersetup{
+	hidelinks,
+	colorlinks,
+	breaklinks=true,
+	urlcolor=color2,
+	citecolor=color1,
+	linkcolor=color1,
+	bookmarksopen=false,
+	pdftitle={Title},
+	pdfauthor={Author},
+}
+
+% Informazioni sull'articolo
+
+% Info sul giornale, non necessario
+% \JournalInfo{Journal, Vol. XXI, No. 1, 1-5, 2013} % Journal information
+% \Archive{Additional note} % Additional notes (e.g. copyright, DOI, review/research article)
+
+% Titolo
+\PaperTitle{Piano Energia Rinnovabile per le Isole di Wallis e Futuna} % Article title
+
+% Autori
+\Authors{Pietro di Maria, Davide Elio Stefano Demicheli, Giulio Bocchi, Silvia Di Chiara, Michael Consigli, Roberta Gentile, Vittoria Conforto, Valerio Valenti, Ilaria Lillo} 
+
+% Parole Chiave (Non necessarie)
+\Keywords{} 
+\newcommand{\keywordname}{Keywords} 
+
+% Astratto (Non necessario)
+% \Abstract{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.}
+
+% Inizio del documento
+\begin{document}
+
+\maketitle 
+
+\tableofcontents 
+
+\thispagestyle{empty} % Rimuove il numero della pagina dalla prima pagina
+
+\section{Isola di Wallis}
+
+\subsection{Scopo}
+In un contesto di globalizzazione caratterizzato da uno sviluppo multipolare, il Territorio deve cercare modalità di integrazione nel mondo moderno senza però perdere né la sua storia né la sua cultura.
+L'elaborazione di una strategia di sviluppo ha come scopo quello di specificare obiettivi e mezzi necessari per impegnare con successo il Territorio nel suo percorso di sviluppo(economico, sociale e culturale)e per soddisfare le legittime aspettative della popolazione(in termini di occupazione, cultura, salute e benessere in generale). 
+Una delle strade individuate, in particolare nell'ambito della programmazione politica e del dialogo con l'Unione Europea e lo Stato, riguarda lo sviluppo dell'innovazione, utile per individuare nuove e adeguate risposte che favoriscano la creazione di attività economiche. 
+Questa nuova prospettiva consentirà sia di fissare la popolazione sul posto, sia di attrarne una nuova invogliata dalle migliori condizioni di vita del Territorio.
+
+\subsubsection{Contesto territoriale}
+L'isola di Wallis o Uvea, si trova nel Pacifico meridionale. 
+Insieme a Futuna e Alofi appartiene alla Nuova Caledonia e rappresenta il territorio francese più lontano dalla Francia metropolitana ($\SI{16000}{\km}$). 
+Il villaggio principale, nonché la capitale, si chiama Mata'utu e ha una popolazione di circa duemila abitanti. \\
+L'anello costiero dell'isola è di circa $\SI{120}{\km}$; il versante più selvaggio è quello a ovest, il quale è quasi disabitato.
+L'isola è sprovvista di spiagge, ma la sua laguna è circondata da 16 motu, isolotti sabbiosi a ridosso della barriera corallina, tutti disabitati. 
+Faioa è al largo della punta meridionale; Saint-Christophe e l'isola dei Lebbrosi sono unite da una striscia di sabbia che permette, durante la bassa marea, di passeggiare fra le due isole. 
+Wallis e Futuna distano $\SI{230}{\km}$ l'una dall'altra, e il tragitto può essere percorso in aereo, in particolare con un twin-otter da 16 posti in servizio dal 26 settembre 2018.
+
+\subsubsection{Biogeografia}
+Wallis ha una flora più modesta rispetto ai territori della Nuova Caledonia o della Polinesia francese, tuttavia la sua flora non è priva di interesse, ciò anche perché l'isola presenta alcune specie endemiche nel suo territorio. 
+La flora di Wallis e Futuna è conosciuta principalmente grazie ad alcune spedizioni botaniche risalenti agli anni '80 e 2000, le cui collezioni sono in gran parte conservate nell'erbario del Museo Nazionale di Storia Naturale di Parigi. 
+Ci sarebbero quindi meno di 2500 esemplari di erbario per questo territorio. \\
+La conoscenza della biodiversità dei fondali marini di Wallis e Futuna, che fino a pochi anni fa era ancora limitata, è stata oggetto di molta attenzione negli ultimi anni, in particolare sotto l'impulso di IFRECOR (Iniziativa francese per le barriere coralline).
+I dati oggi disponibili sono ancora incompleti e insufficienti, ma la conoscenza della fauna e della flora marina è notevolmente migliorata nell'isola di Wallis, in particolare dal 1999. \\
+L'isola di Uvea è circondata da una barriera corallina regolare e continua, che delimita una laguna di circa $\SI{60}{\km\squared}$.//
+La corona della barriera corallina è fortemente asimmetrica: il lato orientale, più battuto, presenta 19 isolotti di origine corallina e/o basaltica. Questa è anche la parte più profonda ($\SI{40}{\m}$ nella baia di Mata-Utu) e presenta poche formazioni coralline viventi.//
+La zona occidentale, meno profonda, ha una barriera corallina marginale più estesa, spesso invasa dalle mangrovie intorno all'isola. Le mangrovie occupano alcune piccole insenature fangose a Wallis e si presentano come una formazione densa alta dai $\SI{3}{\m}$ ai $\SI{4}{\m}$.//
+Inoltre la grande ricchezza della laguna di Wallis è dovuta principalmente alla presenza di praterie di fanerogame, di notevole importanza nell'ecosistema della barriera corallina, il che giustifica la necessità di proteggerle. Queste aree presentano una biomassa vegetale planctonica molto elevata e una produzione attiva; vi abbonda il benthos (crostacei, molluschi, novellame).//
+I coralli comprendono 189 specie. La fauna ittica presenta 703 specie.//
+Su Wallis sono presenti 391 specie di molluschi, appartenenti a 56 famiglie e caratterizzate da un basso numero di individui. \\
+Sull'isola non sono presenti corsi d'acqua permanenti, ma è possibile trovare due tipologie di laghi: i laghi craterici, resti di un'importante attività vulcanica e caratterizzati da sponde basaltiche alte e ripide, e i laghi depressivi, che ospitano invece comunità vegetali idrofile, ma che tuttavia rimangono limitate a causa dell'elevata torbidità dell'acqua. \\ 
+I laghi craterici sono cinque, si trovano nel sud-ovest dell'isola e sono legati alla falda acquifera. Il più grande è il Lago Lalolalo, di circa \(\SI{400}{m}\) di diametro ($\SI{15,2}{\ettari}$), i rimanenti sono i laghi Lanutavake, Lanutali, Lanumata e Lano.//
+Il lago Lalolalo presenta una profondità di 80 m e sembra avere una stratificazione permanente: la sua zona eufotica (dove la luce è sufficiente perché sia possibile la fotosintesi) arriva fino a 4 m, invece la zona anossica (in assenza di ossigeno)fino ai 10 m. Esso ospita 3 specie di pesci: Tilapia Oreochromis mossambicus, un guppy Poecilia reticulata (introdotto) e Anguilla oscura.//
+Va notato inoltre che gli immediati dintorni di Lanutavake e Lano presentano le ultime zone di esistenza delle foreste primarie dell'isola.//
+I laghi depressivi, ovvero quelli paludosi, sono due e si trovano sulla costa orientale dell'isola.//
+Essi rappresentano una preziosa riserva di acqua dolce.// 
+I bordi di tali laghi  ospitano la popolazione della rana Litoria aurea, unica specie di anfibi presente sull'isola. Questa specie introdotta è originaria dell'Australia orientale e dell'Isola del Nord della Nuova Zelanda ed è l'unico vertebrato anfibio dell'isola di Uvea.//
+//
+Alcuni laghi sono legati ad una falda acquifera sotterranea sottostante l'intera isola, che è alimentata dalle piogge e che si trova sovrapposta a una falda acquifera più profonda di acqua marina.//
+L'avifauna dell'isola di Uvea è relativamente povera e non comprende specie endemiche rigorose. Le rive dei laghi depressivi, in particolare Kikila, concentrano alcune specie, come la coda di paglia dalla coda bianca (Phaethon lepturus) e la gallina sultanina (Porphyrio porphyrio).//
+In alcuni laghi si trovano anche piccoli crostacei (Ostracodes) e Odonates come Ischnura aurora (Coenagrionidae).
+
+\paragraph{RETTILI:}
+I rettili sono rappresentati principalmente dagli scinchi e dai gechi. 
+Tra questi alcune specie endemiche delle Fiji e delle isole Wallis e Futuna sono classificati come EN (in via di estinzione) nella Lista Rossa IUCN (2014).//
+I resti delle fitte foreste rendono probabile però la presenza di altre specie endemiche non ancora scoperte.//
+Sull'isola sono presenti anche altre specie di rettili, come il piccolo serpente Indotyphlops braminus (ex Ramphotyphlops braminus).
+ 
+\paragraph{INSETTI}
+Sono stati identificati un totale di 211 artropodi e insetti su Wallis, Futuna e Alofi, di cui solo 6 sono considerati endemici: il ragno Schizocosa vulpecula, una cicala, Baeturia uvaeiensis endemica di Uvea, due coleotteri e altri due artropodi.//
+80 specie sono considerate autoctone e 125 sono specie introdotte. Questo numero particolarmente basso mette in evidenza la necessità di ulteriori indagini.
+ 
+\paragraph{UCCELLI}
+Tutte e tre le isole hanno un numero inferiore di uccelli terrestri riproduttori e marini rispetto alle altre isole del Pacifico.//
+Aplonis tabuensis fortunae, o storno dalla Polinesia, è dei pochi esempi(se non l'unico) di sottospecie endemica specifica di Wallis, Alofi e futuna.
+ 
+\paragraph{FAUNA MARITTIMA}
+\subparagraph{CROSTACEI}
+Wallis ha 31 specie di molluschi terrestri e quattro specie di acqua dolce.//
+Sull'isola le principali aree rimaste di biodiversità endemica delle lumache sono il Monte Loka, le macchie di foresta del monte Lulu Fakahega, il perimetro del Lago di Lano e del Lago di Lalolalo.// 
+Inoltre ci sono circa 19 specie di cetrioli di mare.
+\subparagraph{PESCI}:
+Nel 1999 e nel 2000, a Wallis, sono state registrate 648 specie di pesci di scogliera e laguna. Di queste specie, almeno 15 sono endemiche.//
+Le famiglie più presenti sono Gobiidac (74 specie), Labridae (61), Pomacentridae (57) e Apogonidae (49).//
+La maggior parte delle specie di grandi dimensioni e quelle che si trovano tipicamente nuotando sopra il substrato sono state registrate solo dal censimento visivo, come quasi tutte le specie delle famiglie Carangidae, Cac sionidae, Lethrinidae, Chaetodontidae, Scaridae, Scombridae e Tetraodonti das. 
+
+\subsubsection{Paesaggi culturali}
+\paragraph{SITI ARCHEOLOGICI}
+\subparagraph{Forte di Kolo Nui:} \phantom{a}\\
+Negli anni '90, i ricercatori del CNRS e del Nouméa Development Research Institute hanno effettuato scavi nel territorio di Wallis.//
+Uno dei principali siti archeologici di Wallis è il forte tongano di Kolo Nui a Talietumu nel distretto di Mu'a.//
+Questo è situato nella parte sud-occidentale dell'Oceano Pacifico, a nord-est rispetto a Halalo e a circa 9 km a sud-ovest dalla capitale Mata-Utu.  Era un insediamento fortificato tongano con più ingressi circondato da mura difensive costruite in basalto.//
+Si ritiene che il forte sia stato costruito intorno al 1450, durante l'espansione dell'Impero Tu'i Tonga, e che sia stata l'ultima resistenza dei tongani su Uvea fino a quando non sono stati
+sconfitti.
+\subparagraph{La piattaforma Mālamatagata:} \phantom{a} \\
+La piattaforma Malamatagata si trova alle spalle della spiaggia dell'Utuleve, sulla costa occidentale.//
+Tale piattaforma è un monumento rettangolare, di circa 30 m per 15 m, esteso da un basso collegamento in pietra(fatto probabilmente per permettere ai nobili di non muoversi allo stesso livello dei popolani).// 
+Questo vicolo, deteriorato a causa delle coltivazioni, si unisce alla palude del To'ogatoto in cui sono presenti diverse strutture(tra cui un pozzo e recinti in pietra) destinate, secondo la tradizione orale, alla balneazione dei nobili.
+ 
+\paragraph{SITI RELIGIOSI}:
+la costruzione di chiese sul territorio può considerarsi un arte. Le chiese, presenti in ogni distretto e in ogni villaggio, sono tutte diverse tra loro e per lo più realizzate con pietre vulcaniche molto colorate e scolpite a mano.//
+A Wallis i monumenti religiosi sono circa 26. La diocesi di Wallis e Futuna ha una cattedrale, situata a  Mata Utu (Wallis), e una basilica dedicata a Pierre Chanel Poi.
+ 
+\paragraph{ANALISI DELLA AREE ABITATE:}
+La popolazione conta 8084 abitanti di origine polinesiana e divisa in tre distretti: Hihifo, l'Hahake orientale, Sud Mua.// 
+La parte occidentale è disabitata, le abitazioni si trovano sulla costa della costa orientale.
+parte della popolazione infatti vive ancora nelle fale houses ossia delle abitazioni ovali fatte interamente di paglia.
+ 
+\paragraph{AREE PROTETTE:}
+ad oggi non è stata istituita alcuna area protetta, tuttavia la comunità ha definito un quadro che ha permesso di preservare e valorizzare la biodiversità.// 
+La comunità di Wallis e Futuna, infatti, ha istituito di recente una normativa in materia di tutela degli spazi naturali: il Codice dell'Ambiente è stato adottato dall'Assemblea territoriale il 26 luglio 2007.//
+Le disposizioni generali in materia di spazi e di aree naturali definiscono il termine "area protetta" come una "porzione di ambiente terrestre o marino, appositamente designata alla protezione e il mantenimento della diversità biologica, delle risorse naturali e culturali associate, e amministrato con mezzi efficaci, legali o altri. (Articolo E. 311-1).// 
+In tale contesto, "la conservazione, la valorizzazione e la  gestione degli spazi naturali e paesaggistici del territorio hanno quindi lo scopo di proteggere tali territori da possibili minacce, la maggior parte delle quali sono la conseguenza di attività umane. (Articolo E. 312-1). //
+Il Codice dell'Ambiente specifica che "lo stabilimento delle aree protette riguarda i siti e gli spazi che presentano un interesse per la conservazione della diversità biologica, in particolare consentendo la protezione delle specie e del loro habitat, più in generale per qualsiasi domanda ambientale, economica, sociale, culturale o estetica." (Articolo E. 321-1)
+
+\subsubsection{Diritto fondiario}
+L'altopiano interno di Wallis, situato nel punto più alto a 151 metri (495 piedi) sul livello del mare, offre ai residenti un rifugio nell'entroterra. Il trasferimento verso quest'area, tuttavia, espone i residenti a conflitti interni per quanto riguarda la proprietà della terra perché essa è tradizionalmente tramandata all'interno delle famiglie, con l'approvazione dei capi consuetudinari locali (oltre che essere regolata dalla tradizione orale).
+% TODO: Inserisci tabella
+
+\subsubsection{Consumi energetici}
+Attraverso la legge statutaria del 1961, relativa ai poteri dell'assemblea territoriale, si è stabilito che lo Stato è l'unico competente in materia di energia. 
+L'ordinanza del 12 maggio 2016 estende e adegua alle isole Wallis e Futuna diverse disposizioni del Codice dell'energia. 
+Questa ordinanza ha tre conseguenze molto concrete per la popolazione e il territorio delle isole Wallis e Futuna:
+\begin{itemize}
+	\item nel 2020 le tariffe regolamentate per la vendita di energia elettrica al netto delle tasse sono state allineate a quelle della Francia continentale
+	\item La transizione energetica a Wallis mira a raggiungere il 50\% di energia rinnovabile entro il 2030 e l'autonomia energetica entro il 2050
+\end{itemize}
+L'attuazione dell'obbligo di acquisto di energia elettrica prodotta da fonti rinnovabili consentirà di sviluppare energie rinnovabili per il raggiungimento degli obiettivi prefissati.//
+Gli idrocarburi consumati nel Territorio sono benzina, diesel e jet A1. //
+Il diesel è il combustibile più utilizzato e rappresenta il 70\% del consumo totale di idrocarburi dell'arcipelago. La società EEFW lo utilizza per la produzione di energia elettrica, che da sola rappresenta più del 65\% del consumo a Wallis e Futuna.//
+Il consumo unitario o il consumo medio per cliente è di 4,7 MWh all'anno. Va notato che diversi grandi consumatori producono la propria elettricità.
+
+\subsubsection{Produzione di energia}
+Wallis e Futuna sono elettrificati e non sono interconnessi tra di loro, costituendo due sistemi elettrici e reti completamente separati.// 
+Poiché la maggior parte della popolazione si trova a Wallis, anche la domanda di energia è più alta.//
+Nella centrale termoelettrica dell'isola sono presenti 7 gruppi elettrogeni di potenza installata e diverse strutture fotovoltaiche.//
+Fino al 2016, EEFW non è stato soggetto a revisione dei costi da parte della Commissione di regolamentazione dell'energia.//
+SWAFEPP è responsabile dello stoccaggio e della distribuzione di idrocarburi a Wallis e Futuna. Il carburante viene fornito da una petroliera delle Fiji.//
+I prezzi sono gli stessi sia a Wallis che Futuna, circa ogni tre mesi viene fissato il prezzo massimo tramite un decreto.//
+La struttura dei prezzi dei prodotti petroliferi sono determinati tramite una deliberazione dell'Assemblea territoriale.//
+Il prezzo al dettaglio risulta dalla somma di tutti i costi intermedi: costo di importazione, tasse, costo dei servizi locali e margine degli addetti alle stazioni di servizio; per quanto riguarda il gas, la struttura si basa sullo stesso principio.//
+A Wallis il parco produttivo della centrale termoelettrica è composto da 7 generatori con una capacità installata totale di 6,78 MW. I due gruppi più importanti hanno un potere di 1,25 MW. La potenza garantita in caso di mancanza di due motori è quindi di 4,28 MW.//
+Sono in corso diverse azioni per migliorare la distribuzione dell'energia elettrica, tra cui l'interramento della rete MT e il parziale rinnovamento della rete di distribuzione con la sostituzione di 58 stazioni di trasformazione giunte a saturazione per un importo di quasi \(\SI{1200000}{\EUR}\) (150 MFCFP).
+
+\subsubsection{Disponibilità di FER}
+Wallis e Futuna sono vulnerabili ai cambiamenti climatici.//
+L'estrazione di sabbia da parte dell'industria edile locale ha aumentato l'erosione della costa. Questo fenomeno, unito all'innalzamento delle acque, porta ad una riduzione della superficie abitabile, che richiederà  lo spostamento delle popolazioni nell'entroterra.//
+I cicloni sono più frequenti e alcuni si verificano fuori stagione, come il ciclone Ella nel 2017.//
+Il cambiamento climatico rischia inoltre di ridurre la produzione agricola, aumentando la dipendenza alimentare da prodotti importati.//
+Per trovare soluzioni adeguate è necessario anche tener conto delle norme culturali della popolazione e passare attraverso l'organizzazione sociale strutturata dal consueto capotribù.//
+A Wallis oggi si sfrutta solo l'energia fotovoltaica proveniente dal progetto TEP VERTES (sostenuto dall'Unione Europea) con una potenza installata di 128kWp; inoltre sono anche stati individuati due progetti di sviluppo di energie rinnovabili che utilizzano energie rinnovabili stabili://
+un progetto per una centrale elettrica da 500kW che sfrutta la biomassa situata a malaé, il quale potrebbe essere sviluppato gradualmente, da 100kW a 150kW per testare e seguire la sua evoluzione e affidabilità.//
+Un progetto per il recupero di rifiuti verdi, liquame e svuotamento di fosse settiche da cui si può ricavare biogas per fornire più di 100kW.//
+L'obiettivo è quello di sviluppare 3MW di fotovoltaico dando priorità a quello su tetto://
+EEFW ha redatto un inventario degli edifici pubblici elencando le superfici dei tetti e il potenziale fotovoltaico per quanto riguarda l'orientamento, lo stato dei tetti e dei pendii.// 
+Sono stati individuati più di trenta siti con una potenza dell'ordine di 2MW, di cui 9 siti con potenza superiore a 100kWp.//
+Numerosi edifici privati di natura commerciale hanno un grande potenziale per lo sviluppo del fotovoltaico su tetto.
+
+
+\subsubsection{Produttività da tecnologie FER}
+Le caratteristiche pedoclimatiche del territorio dimostrano, nonostante le sua fragilità, un ambiente favorevole all'agricoltura.//
+I wallisiani coltivano la terra principalmente per le proprie esigenze di autoconsumo, inoltre essa svolge un ruolo importante nella vita comunitaria e consuetudinaria.//
+Questa identità culturale consente loro di preservare e perpetuare il know-how legato all'agricoltura di tipo familiare, pratica che si avvicina all'agricoltura biologica per la sua natura particolarmente rispettosa dell'ambiente.//
+Nonostante gli attuali rapidi mutamenti del territorio a causa della globalizzazione, la popolazione ha saputo adattarsi e sfruttare al meglio la propria conoscenza. In questa osservazione, il settore primario è parte integrante delle aree da sviluppare strategicamente ed è in grado di rispondere favorevolmente alle sfide del territorio.//
+L'interesse è promuovere professionalmente l'agricoltura locale, in una logica adeguata che tenga conto delle specificità locali.//
+L'obiettivo è la creazione di settori che diano maggiori opportunità occupazionali ai giovani del territorio, tutto ciò sia per fornire al mercato prodotti freschi e di qualità, sia per ridurre i problemi di salute della popolazione legati alla cattiva alimentazione della popolazione causata dalle disuguaglianze economiche.
+La nozione di sviluppo deve essere fatta su scala ragionevole perché la superficie di Wallis e Futuna è piccola (142 km\^2) ma anche perché la posizione geografica del territorio nel Pacifico non è vantaggiosa in termini di scambi con l'esterno.//
+Il Territorio attualmente trae gran parte delle sue risorse dalla tassazione del gasolio, utile per la produzione di energia elettrica.//
+Lo sviluppo delle energie rinnovabili comporta un minor utilizzo di combustibili fossili e quindi un calo delle entrate per il Territorio.// 
+Ciò costituisce un freno allo sviluppo delle energie rinnovabili.//
+Può essere interessante studiare una tassa locale sui kW distribuiti che consentirebbe di garantire una risorsa stabile per la comunità senza penalizzare lo sviluppo energie rinnovabili.
+
+\subsubsection{Mercato energetico}
+Il Codice energetico attribuisce all'isola di Wallis lo status di zona non interconnessa (ZNI) alla rete elettrica metropolitana continentale.//
+A Wallis, la società EEWF (Water and Electricity of Wallis and Futuna, filiale del Gruppo Engie) è responsabile dell'investimento, della gestione della produzione e della distribuzione di elettricità //
+EEFW acquista tutta l'energia elettrica prodotta sul territorio insulare, gestisce continuamente l'equilibrio tra domanda e offerta di energia elettrica e ne assicura la trasmissione, distribuzione e fornitura a tutti i clienti.//
+La produzione di elettricità non rientra nell'ambito del monopolio di EEWF. //
+Come negli altri ZNI, i costi di produzione e di elettricità sono significativamente più alti di quelli osservati nella Francia continentale.
+
+
+\subsection{Contesto socio-culturale}
+\subsubsection{Storia coloniale, decoloniale, post-coloniale.}
+I primi abitanti di Wallis furono austronesiani appartenenti alla civiltà di Lapita.//
+Essi arrivarono a Wallis intorno al I millennio aC.//
+Tali abitanti formarono con gli arcipelaghi circostanti la "società ancestrale polinesiana".//
+Uvea fu poi integrata in una vasta rete di scambi (con varie isole della Polinesia) che si protrassero fino alla metà del 19° secolo con l'arrivo dei missionari europei.//
+Questi polinesiani ancestrali si impossessarono delle terre e cominciarono a sfruttarle, raccogliendo varie piante ( taros, igname...) su fertili terre vulcaniche e parlando la stessa lingua, il proto-polinesiano.//
+Dall'anno 1000 seguì un secondo periodo, chiamato "Atuvalu", che durò fino al 1400 durante il quale gli Uvei passarono da un'economia di pesca e raccolta ad un'economia incentrata sull'agricoltura, in particolare sulla coltivazione del taro. //
+Queste trasformazioni dello spazio e del sistema produttivo portarono a importanti ripercussioni sociali, tra cui la nascita del regno di 'Uvea con un capo gerarchico.// 
+Ai primi chiefdom autonomi, nel sud e nel nord dell'isola, succedettero i primi "re" (in wallisiano hau) di 'Uvea.//
+A tutto ciò poi seguì la conquista tongana di Wallis.//
+Per stabilire il loro dominio, i tongani occuparono e costruirono molti forti come Kolonui, per questo motivo tale periodo viene chiamato ancora il "periodo dei forti".//
+L'occupazione si fermò poi intorno al 1500, con l'instaurazione di un sistema politico dinastico modellato sul modello tongano: un chiefdom di tipo piramidale, guidato da un hau ("re").//
+È dal periodo dinastico, intorno al 1500, che iniziarono le genealogie dei successivi re di Wallis ( Lavelua ). 
+Solo il chiefdom settentrionale (Hihifo) rimase indipendente e questa resistenza portò a numerosi conflitti, tra cui la guerra di Molihina, una 'guerra di indipendenza contro il dominio politico tongano'.//
+I tongani imposero gradualmente la loro struttura sociale; la lingua wallisana si trasformò in profondità, integrando molti elementi del tongano. //
+L'influenza tongana ebbe conseguenze durature sulla storia locale, ma dopo circa un secolo dalla conquista tongana, 'Uvea ottenne gradualmente l'autonomia da Tonga, fino a quando uno dei Tu'i Tonga proclamò l'indipendenza dell'isola.// 
+Il capitano britannico Samuel Wallis fu il primo europeo a sbarcare sull'isola nell'agosto del 1767. Fu per questo motivo che il suo equipaggio decise di nominare l'isola in suo onore.//
+A quel tempo 'Uvea contava 4.000 abitanti e rimase in gran parte isolata dai contatti tra polinesiani e occidentali, il che spiega anche perché l'isola riuscì a mantenere la sua cultura e non subì una colonizzazione europea in senso stretto.//
+Nel corso del diciannovesimo secolo a Wallis e Futuna iniziarono ad arrivare i marinai disertori.//
+I capi a sud di Wallis, dove si avvicinarono le barche, acquisirono abbastanza rapidamente un potere importante. Alcuni Wallisiani iniziarono a parlare anche inglese potendo così controllare il commercio estero, anche se ciò comunque destabilizzò i Lavelua.//
+Gli incontri tra marinai occidentali (per lo più inglesi o americani) e polinesiani non furono però privi di scontri, talvolta sfociarono in massacri, il più noto è quello del 1830, in cui un mercante inglese acquistò l'isolotto di Nukuatea dove si insediò con il suo equipaggio, e da quel momento in poi, si considerarono proprietari dell'isola e cercarono di riservarne l'uso a se stessi.//
+Tuttavia, questa modalità di possesso esclusivo non poteva esistere nella società tradizionale wallisiana e iniziarono gli alterchi.//
+In ogni caso la presenza europea non fu significativa fino al 1842, si stabilirono legami di amicizia più stretti tra i due paesi. Il rapporto tra Wallis e la Francia non fece che rafforzarsi poi nel corso degli anni.//
+Wallis però fu anche oggetto di desiderio tedesco e inglese e ciò rappresentò un pericolo per la Francia, soprattutto in termini religiosi: l'opera religiosa a cui si dedicarono i francesi sull'isola poteva infatti essere seriamente compromessa se una potenza prevalentemente protestante fosse venuta a legiferare.//
+Il trattato del 19 novembre 1886, o più esattamente del 5 aprile 1887, stabiliva l'effettivo protettorato della Francia su Wallis.//
+Infine, il decreto del 5 marzo 1888 unificò questi due protettorati che divennero un unico protettorato "delle isole Wallis e Futuna".//
+Nel corso dei primi anni del '900 ci furono diversi tentativi di annessione di Wallis alla Francia che però non andarono a buon fine.//
+La seconda guerra mondiale poi provocò molti sconvolgimenti a Wallis.//
+Tomasi Kulimoetoke è una figura che ha segnato la storia di Wallis e Futuna, poiché fu sotto il suo regno che le due isole passarono dallo status di protettorato a quello di Territorio d'Oltremare.//
+Nel 1959 fu organizzato un referendum sul cambio di stato.//
+Il "sì" vinse a stragrande maggioranza (100\% a Wallis dove la popolazione).//
+Fondamentale fu lo statuto del 1961, poiché mantenne e riconobbe l'organizzazione tradizionale dell'isola (capogruppo e monarchia), il diritto consuetudinario per i civili e l'educazione cattolica.//
+Venne istituita un'assemblea territoriale eletta a suffragio universale con una ventina di membri. A Wallis e Futuna furono assegnati anche un deputato e un senatore.// 
+Il territorio fu rappresentato anche da un consigliere economico e sociale. La carica di Residente in Francia fu sostituita da quella di Senior Administrator di Wallis e Futuna.//
+Wallis e Futuna beneficiarono quindi di uno status su misura, adattato all'organizzazione sociale e politica delle due isole.//
+La moneta, un tempo riservata agli europei e ad alcune famiglie di funzionari locali, divenne più abbondante.//
+La società wallisiana  adottò rapidamente il modello della società dei consumi, provocando il proliferare di grandi aree di vendita (ipermercati) e il crescente indebitamento delle famiglie con le banche.//
+Successivamente, dopo la revisione costituzionale del 2003, Wallis entrò a far parte della collettività d'oltremare di Wallis e Futuna.//
+
+\subsubsection{Storia culturale, sociale, politica.}
+Nel 20° secolo la popolazione di Wallis è aumentata costantemente: a partire dal 1942, grazie all'installazione di una base americana a Wallis, ha inizio un periodo di grande prosperità, che favorì la natalità e ridusse notevolmente la mortalità. Di conseguenza, Wallis conobbe una "esuberanza demografica" che portò a un aumento della popolazione del 45\%.//
+Il picco demografico è stato raggiunto recentemente, nel 2003.//
+Durante il censimento del 2018, c'erano 11.558 abitanti per l'insieme delle isole Wallis e Futuna, di cui il 72,1\% appartenenti all'isola di Wallis.//
+La forte emigrazione, combinata con l'aumento dell'aspettativa di vita alla nascita, è il risultato di un invecchiamento della popolazione.// 
+L'età media è aumenta da 28 anni a 32,2 anni tra il 2008 e il 2013. //
+Essendo un territorio francese, la lingua ufficiale dell'isola è il francese mentre il dialetto è il wallisiano, tutelato dall'Accademia delle Lingue Vallisiane; l'inglese è assai diffuso dato che è parlato in molte isole limitrofe.//
+La pesca e l'agricoltura sono le principali attività sin dall'antichità, l'economia, infatti, si basa sulla prevalenza del settore primario.//
+Quasi l'80\% della popolazione vive di agricoltura, pesca o artigianato.// 
+La pubblica amministrazione è la fonte del 75\% dei posti di lavoro.// 
+Il settore privato, dal canto suo, è ancora debole nella creazione di ricchezza, solo l'attività commerciale contribuisce in modo significativo all'economia locale e  impiega oltre 300 persone.//
+L'importazione di merci, inoltre, rappresenta oltre il 90\% del consumo.//
+Sebbene il turismo rimanga a un livello molto basso, Wallis e Futuna, per la loro autenticità culturale, potrebbero attirare diversi  visitatori, tuttavia lo sviluppo del settore è ostacolato da handicap strutturali quali l'isolamento dai potenziali mercati turistici, l'alto costo del biglietto aereo, la mancanza di infrastrutture e gli alti prezzi dei servizi legati all'indicizzazione dell'alto costo della vita.
+Una delle bevande più diffuse è la Kava, ricavata dalla pianta omonima pestando le foglie e mescolandole con l'acqua fredda, ottenendo così un liquido grigiastro da consumare il prima possibile; solitamente viene consumata durante rituali e cerimonie. //
+Famosi in tutto mondo sono i capi realizzati in tapa, un tessuto tipico del Pacifico creato a partire dalla corteccia del gelso da carta o dell'albero del pane, che viene tagliata finemente, imbevuta d'acqua e infine battuta per ottenere fogli molto sottili da cui si ricava il tessuto vero e proprio, il quale poi viene decorato con diverse tecniche.//
+Sull'isola è presente un museo privato, l'Uvea Museum Assotiation, collocato nella capitale Mata Utu, visitabile solo tramite appuntamento. Al suo interno è possibile trovare oggetti che raccontano la storia di Wallis durante la seconda guerra mondiale, la maggior parte dei quali sono stati donati da veterani americani.//
+Per quanto riguarda l'istruzione, quella primaria è affidata alla Direzione dell'Educazione Cattolica(infatti è gratuita), quella secondaria è gestita dal vicerettorato,  mentre sono presenti soltanto un liceo di istruzione generale e un liceo agrario.//
+Gli studenti provengono anche dall'isola di Futuna.//
+La sanità è a carico dello Stato e sul territorio sono presenti due ospedali e tre dispensari, anche se per le operazioni più specifiche spesso i pazienti vengono portati nelle strutture sanitarie della Nuova Caledonia.// 
+Le risorse sanitarie sono comunque scarse e la popolazione soffre per il 20\% di diabete mentre l'80\% è in sovrappeso, per questo motivo, nel marzo 2020, l'isola ha deciso di bloccare l'arrivo dei voli e l'assembramento di più di 100 persone, così facendo riuscì a non far circolare il virus sul territorio.//
+La religione di Wallis è il cattolicesimo, che da circa 200 anni ha sostituito le credenze tradizionali, e che svolge oggi un ruolo fondamentale all'interno della società.//
+
+\paragraph*{Contesto politico e ambientale attuale.}
+In quanto territorio francese sul territorio dell'arcipelago vige la Costituzione francese del 1958, in particolare regalata dall'articolo 74 del titolo XIII.//
+Viene utilizzato il sistema legale francese ed il suffragio è universale per coloro che hanno superato l'età di 18 anni.// 
+Il capo di stato è il Presidente francese (Emmanuel Macron), che viene eletto tramite un voto popolare presidente della Repubblica per un mandato di cinque anni .//
+Il Consiglio dei Territori è composto dai Re dei tre regni tradizionali (Uvea, Sigave, e Alo) e da tre membri nominati dall'Alto Amministratore su consiglio dell'Assemblea Territoriale.//
+Il potere legislativo è affidato all'Assemblea Territoriale unicamerale, i cui membri sono eletti con voto popolare ogni 5 anni.//
+Wallis e Futuna hanno diritto di eleggere un Senatore per il Senato francese e un deputato per l'Assemblea Nazionale francese.// 
+I tre regni tradizionali amministrano la giustizia secondo leggi tradizionali (solo per illeciti non penali). La corte d'appello si trova a Numea, nella Nuova Caledonia. //
+Il territorio, inoltre, partecipa al Segretariato delle comunità del Pacifico, un'organizzazione internazionale il cui scopo è quello di sviluppare le capacità tecniche, professionali, scientifiche e di gestione dei popoli delle isole del Pacifico, fornendo direttamente informazioni e consulenze circa il loro sviluppo e benessere.//
+L'economia di Wallis e Futuna è essenzialmente rurale. //
+Fa parte di un'economia del dono e del controdono, in cui lo scambio di mercato è praticamente assente.//
+Grandi cerimonie consuetudinarie come il katoaga consentono la circolazione della ricchezza e una riaffermazione dell'ordine sociale.//
+Il valore dei beni che vengono ostentatamente scambiati dipende dalle relazioni sociali e dal loro valore d'uso. //
+L'antropologa Sophie Chave-Dartoen osserva quindi che "termini come 'ricchezza' e 'valuta' non hanno equivalenti nella lingua valliana e la loro traduzione pone un problema".//
+Per l'antropologo Patrick Vinton Kirch, queste cerimonie di scambio di merci costringono gli abitanti a produrre più di quanto sarebbe sufficiente per la loro sussistenza per avere sempre delle eccedenze da offrire.//
+Questo quindi modella la produzione agricola (igname, taro, ecc.) e i suoi sottoprodotti (stuoie e tapa).//
+Dal 1976, l'occupazione pubblica è aumentata notevolmente, passando da meno di 400 posti di lavoro a un  mercato di 4.000 lavoratori, per poi crescere ulteriormente fino a più di 1.070 su 1.800 posti di lavoro nel settore del mercato.(?) 
+Se ogni anno più di 300 nuovi giovani lasciano il sistema educativo, non vengono creati più di 15 nuovi posti di lavoro. //
+Inoltre, questa significativa disoccupazione è compensata da un massiccio esodo della popolazione, in particolare dei giovani che stanno tentando la fortuna in Nuova Caledonia, in Australia, o direttamente nella Francia metropolitana.// 
+Per visitare l'entroterra non ci sono mezzi pubblici, per questo motivo è necessario noleggiare un'auto, disponibile in entrambe le isole, anche se a Fortuna non esistono agenzie ufficiali.// 
+Non esiste il noleggio di bici o scooter. È presente aeroporto e porto.//
+
+\subsection{Modellazione energetica}
+\subsubsection{Scenari: ipotesi}
+\subsubsection{Scenari: risultati e indicatori}
+\subsection{Strategia di accesso al campo e posizionamento}
+L'obiettivo della strategia può essere quello di aumentare la capacità del Territorio di muoversi verso uno sviluppo economico sostenibile, preservandone i valori, l'ambiente e valorizzandone le specificità.//
+La strategia deve creare un sistema sostenibile che mantenga l'innovazione e faccia affidamento sui mezzi messi in atto dal Territorio per garantire l'attuazione della sua strategia e del suo piano d'azione.//
+La direzione principale della strategia può essere riassunta come un innovazione per adattarsi in modo intelligente e sostenibile di fronte al cambiamento.
+
+
+\subsubsection{Portatori di interesse (potere decisionale, influenza, obiettivi)}
+In generale, i piani per l'evoluzione dell'energia rinnovabile devono allinearsi agli obiettivi nazionali e internazionali e alle politiche pubbliche locali in materia di energia, ambiente e pianificazione.// 
+Tuttavia, a Wallis e Futuna ciò avviene nel rispetto delle giurisdizioni del territorio.// 
+Infatti, sul territorio non è possibile applicare determinate  disposizione, come://
+Il Fondo di ammortamento oneri di elettrificazione (FACE) che rientra nel Codice Generale Enti Locali (CGCT)//
+La Regolamentazione termica (RT), perché sull'isola non viene applicata né la RT nazionale né la RT d'oltremare.//
+Le disposizioni nazionali che incorporano misure fiscali (compresi i crediti d'imposta, ecc.), poiché di competenza della "Collectivité Territoriale".//
+I principali fattori determinanti della variazione della domanda sono demografia e crescita economica.//
+I censimenti effettuati ogni cinque anni sul Territorio, evidenziano un cambiamento della struttura della popolazione di Wallis e Futuna.//
+Secondo l'ultimo censimento della popolazione la popolazione è diminuita del 9,5\% tra il 2008 e il 2013.//
+Questa evoluzione è in parte spiegata dalla forte emigrazione di giovani dai 20 ai 35 anni.//
+Dopo il movimento di decelerazione iniziato alla fine del 2012 e osservato fino all'inizio del 2015, l'indice dei prezzi al consumo ha registrato un moderato aumento annuo dello 0,9\% .// 
+In questo contesto, l'attività nel settore del commercio, di primaria importanza per la vitalità economica del territorio, è rimasta dinamica grazie al mantenimento del consumo domestico.// 
+Il settore edile invece risente della limitatezza degli appalti pubblici e della domanda privata, il che significa che non c'è lavoro a sufficienza per  mantenere un livello stabile di attività per tutti gli attori.//
+In generale, le aziende del territorio hanno ridotto lo sforzo di investimento.//
+Le importazioni annuali di beni intermedi e beni capitali si contraggono rispettivamente di 18\% e 9,2\%.//
+La prima azione di gestione della domanda è consistita in aiuti fiscali per i fornitori di lampadine a basso consumo, tuttavia l'ADEME (Agence de Nouvelle Calédonie) ha intrapreso azioni su piccola scala, limitandosi per il momento ad un'operazione di pre diagnosi energetica e al supporto di un'operazione di pre diagnosi collettiva alle imprese.//
+Ciò consente ad ADEME di effettuare un primo test sul campo al fine di predisporre interventi su ampia scala, ciò quando le sue attribuzioni e modalità di intervento saranno specificate.//
+La significativa riduzione del prezzo, concessa a tutti i consumatori con incrementi di 50 kWh fino al 2020,  rischia di creare una rottura con le tendenze storiche con un maggiore uso di elettricità, in particolare utilizzando l'aria condizionata.//
+L'allineamento tariffario a Wallis e Futuna prevede una divisione dei prezzi di un fattore 5 in quattro anni; vengono stabiliti tre scenari per l'evoluzione della domanda entro il 2022 rispetto a 2015://
+\begin{itemize}
+	\item Nello scenario basso si moltiplica il consumo per 1,4 e la potenza per 1,5;//
+	\item Nello scenario medio si moltiplica il consumo per 1,7 e la potenza per 1,9;//
+	\item Nello scenario alto, il consumo viene moltiplicato per 2,2 e la potenza per 2,4//
+\end{itemize}
+Sono già state individuate diverse linee di azione, come ad esempio://
+\begin{itemize}
+	\item Incoraggiare l'acquisto di apparecchiature ad alta efficienza energetica (condizionatori d'aria, frigoriferi, ecc)//
+	\item L'incentivo all'utilizzo dell'Acqua Calda Solare (ACS) modulando la tassazione e utilizzando il sistema di promozione del risparmio CSPE.//
+	\item lampadine a filamento con LED//
+	\item Un'azione coordinata di comunicazione di tutti gli attori: Stato, ADEME, EEWF.//
+\end{itemize}
+In questo modo, così come per le agenzie locali e per l'energia in Europa, è possibile la creazione di un sistema di consulenza energetica indipendente che riunisca tutti gli attori energetici del territorio: Stato/Territorio, ADEME, EEWF per fornire esperienza sul campo, supporto operativo per le politiche di sensibilizzazione, informazione del pubblico e uno spazio per mettere in comune e diffondere idee sull'efficienza energetica.//	
+
+\subsubsection{Legittimità e riconoscimento (pratiche, comportamenti e protocolli)}
+Né la legge n. 61-814 del 29 luglio 1961, né il decreto n. 57-811 del 22 luglio 1957 relativo alla attribuzioni dell'assemblea territoriale, del consiglio territoriale e dell'amministratore superiore delle isole Wallis e Futuna (articolo 40) hanno conferito alla collettività la competenza regolamentare in materia di energia.//
+Lo Stato è quindi l'unico organo competente a determinare tutte le norme applicabili.//
+Fino al 2015 non sono state previste disposizioni di legge relative al settore elettrico o energetico, neppure il decreto relativo alla distribuzione dell'energia elettrica nella Nuova Caledonia, in quanto non è stato reso applicabile alle isole Wallis e Futuna.//
+L'articolo 1 della bozza di decreto richiama quanto previsto dal Libro I del codice dell'energia, relativo all'organizzazione generale del settore energetico. 
+Questo articolo distingue://
+Le disposizioni specifiche per le isole di Wallis e Futuna, definendo in particolare l'autorità pubblica di organizzazione della distribuzione, l'autorità concedente e la consistenza della rete distributiva.//
+Le disposizioni del diritto metropolitano applicabili alle isole di Wallis e Futuna, le quali riguardano in particolare il compenso per costi aggiuntivi, il ruolo di CRE, il mediatore energetico e gli esercizi di programmazione energetica pluriennale.//
+Disposizioni di adeguamento, in particolare la definizione degli obiettivi della transizione energetica applicabile alle isole Wallis e Futuna.//
+L'articolo 2 dello schema di ordinanza richiama le disposizioni del Libro II del codice dell'energia che definisce il controllo della domanda di energia e lo sviluppo delle energie rinnovabili.// 
+Questo articolo distingue:
+Le disposizioni speciali per le isole di Wallis e Futuna chiarendo le competenze di ADEME.//
+Le disposizioni del diritto metropolitano applicabili alle isole di Wallis e Futuna, comprendendo le definizioni delle energie rinnovabili.//
+L'articolo 3 dello schema di decreto richiama le disposizioni del Libro III del Codice dell'Energia, in materia di elettricità. //
+Questo articolo distingue:
+Le disposizioni specifiche per le isole di Wallis e Futuna, in termini di tariffe di vendita regolamentate, le autorizzazioni alla produzione e il collegamento di energie rinnovabili.//
+Le disposizioni del diritto metropolitano applicabili alle isole di Wallis e Futuna riguardo la produzione, le reti e la vendita di energia elettrica.//
+Disposizioni di adeguamento che tengano conto dell'organizzazione amministrativa dell'isola di Wallis e Futuna.//
+L'articolo 4 del progetto di ordinanza riguarda misure transitorie e comporta tre conseguenze molto concrete per la popolazione://
+\begin{itemize}
+\item le tariffe per la vendita di energia elettrica al netto delle imposte  sono state allineate nel 2020 dopo la firma del decreto del 29 giugno 2016
+\item la transizione energetica a Wallis mira a raggiungere il 50\% di energia rinnovabile nel 2030 e autonomia energetica nel 2050
+\item l'obbligo di acquisto di energia elettrica ricavata da energia rinnovabile permetterà il raggiungimento degli obiettivi
+\end{itemize}
+
+\subsection{Conclusioni}
+\subsubsection{Limiti e opportunità}
+\subsubsection{Analisi delle opzioni}
+
+\section{Isola di Lipari}
+\subsection{Scopo}
+Con questa relazione, andiamo ad analizzare sia dal punto di vista antropologico che energetico l'isola di Lipari, per poter studiare un progetto energetico specifico sulla base del territorio, delle risorse e della popolazione che abita il luogo di interesse.
+
+\subsubsection{Contesto territoriale}
+L'isola di Lipari, anticamente definita Meligunis dai colonizzatori greci; è la più grande delle isole costituenti l'arcipelago delle Eolie. 
+Presenta una superficie di $37,6 km^2$ con circa 12000 abitanti residenti con  una densità media abitativa di $136,7 \text{abitanti}/km^2$.  
+Dalla raccolta dei dati a partire dall'anno 2001 fino al 2020, è possibile notare come il numero di residenti nell'isola sia sommariamente sempre aumentato, seguito da una leggera diminuzione (registrata nel periodo del covid). 
+Il principale nucleo abitativo dell'isola di Lipari si sviluppa lungo Marina Corta, Marina Lunga e la fortificazione del Castello; altri piccoli centri sono situati nelle contrade di Canneto, Pianoconte, Acquacalda e Quattropani, tutti collegati tra loro da un'efficiente rete stradale.
+Un altro dato di fondamentale importanza, riguarda l'analisi dei flussi migratori della popolazione. 
+Dai grafici è possibile evidenziare la costante positività sia del saldo migratorio totale (il quale comprende sia i contributi dovuti alla migrazione da e per l'estero sia la migrazione da e per altre regioni), che del saldo migratorio con l'estero. 
+Un po' più oscillante è invece l'analisi degli spostamenti tra Lipari e le altre regioni, che presenta picchi di massimi negli anni 2012 e 2013,  riconducibile all'aumento copioso del turismo nazionale (+10\%) ed internazionale (+20\%). 
+Questi numeri, fanno ovviamente pensare che il turismo, sia una delle attività di sostentamento più importanti dell'isola; infatti se fino alla prima metà degli anni '50, a Lipari e in tutte le Eolie, il profilo economico si basava sull'agricoltura, sulla pesca ed estrazione della pietra pomice; con l'avvento della cinematografia con i film "Stromboli, terra di Dio" di Roberto Rossellini e "Vulcano" del regista americano William Dieterle; si prospetta l'avvento del turismo, causando così il progressivo cambiamento delle isole Eolie per potersi permettere di sviluppare il settore terziario adeguatamente. 
+
+\subsubsection{Biogeografia}
+L'isola di Lipari è il risultato di una serie di eruzioni vulcaniche che si sono succedute nel corso dei millenni. 
+Essa presenta coste alte e frastagliate, con numerosi scogli, grotte e faraglioni; la sua superficie ha forme molto irregolari, alcune montagne si separano solo in sommità, mentre altre appaiono totalmente indipendenti. 
+I rilievi principali dell'isola sono Monte S. Angelo, Monte Chirica, Monte Pilato e Monte Mazzacaruso.
+La flora vascolare conta 900 specie e non è difficile incontrare specie esotiche come eucalyptus, acacia e alnus. 
+La popolazione floristica è composta in prevalenza da piante erbacee che costituiscono circa l'80\%, mentre il restante 20\% è composto da piante legnose. 
+Dal punto di vista biogeografico ed ecologico, risultano essere di rilevante interesse le specie endemiche come la podarcis raffonei e l'elyomis quercinus liparensis. 
+Nella zona di Pirrera si possono ammirare boschi autoctoni, i quali hanno permesso all'ecosistema di mantenersi integro nel suo aspetto naturale, dal momento che per l'uomo è difficile avere accesso a queste aree. 
+Questi boschi sono composti principalmente da leccio, erica, caprifoglio. 
+L'impoverimento del patrimonio boschivo ha portato la sostituzione delle piante arboree con la macchia Mediterranea, costituita dalla ginestra odorosa, da cisti e dall' endemica ginestra.
+Una delle coltivazioni che si è contraddistinta nel corso dei secoli e che, ad oggi, rappresenta una grossa realtà produttiva, è quella del cappero (quest'ultimo viene esportato in apposite anfore sin dai tempi dei romani). 
+Oltre ad essere uno dei perni della cucina locale, è una grossa fonte di reddito insieme alla malvasia.
+Dal punto di vista faunistico, maggiore interesse viene attribuito alle specie endemiche, esclusivamente circoscritte al territorio eoliano. 
+Il numero è ridotto, e basta pensare alle specie focali podarcis raffonei e alle sue sottospecie di gliride, ancora individuabili in alcuni tratti boschivi di Lipari. È presente un numero elevato di specie di invertebrati. 
+Tra gli insetti si trovano allo stato endemico cinque specie di coleotteri, una di lepidottero, una di omotteri, due di ragni disderidi, tre di collemboli e cinque di molluschi polmonati.
+Nei periodi primaverili ed autunnali, si assiste al transito di uccelli migratori come oche selvatiche, quaglie, fenicotteri, pellicani, la Berta Maggiore, il Falco Mediterraneo, il Corvo Imperiale.
+Particolare rilievo è assunto dalla lucertola delle Eolie, presente ormai in numeri molto ridotti, solo in poche aree a causa dell'introduzione della lucertola campestre (podarcis sicula) da parte dell'uomo.
+L'intensa attività vulcanica che contraddistingue l'arcipelago, composto da ben 12 vulcani collegati, ha modellato i fondali creando un ambiente caratterizzato da scogliere, vulcani sommersi e grotte. 
+I fondali marini offrono pareti di ossidiana, distese di posidonia e colorazioni che variano dal bianco della pomice al nero della sabbia vulcanica.
+L'elevata biodiversità della vegetazione marina e la presenza di alghe pelagiche costituiscono un ambiente ricco di insediamenti e di specie bentoniche e planctoniche, creando un ambiente perfetto di nidificazione per numerose specie ittiche quali: Aragosta, Astice, Calamaro, Cavalluccio marino, Cefalo, Cernia, Dentice, Gambero, Pesce spada, Polpo. 
+Proprio grazie a questi, i cetacei trovano un ambiente ideale per la loro sopravvivenza. 
+Le specie più comuni sono: il Capodoglio, il Delfino, la balenottera.
+
+\subsubsection{Paesaggi culturali}
+Per la sua posizione e per la sua estensione, Lipari è stata la prima delle isole ad essere abitata, dal 5.000 a.C., durante il neolitico medio e vide il susseguirsi di varie civiltà. 
+È la più popolosa isola dell'arcipelago, ed i suoi abitanti vivono in diversi centri abitati: Lipari centro, Pianoconte, Canneto, Quattropani, Acquacalda, Porticello.
+L'abitato si estende ai piedi dell'imponente rocca del Castello, l'antica acropoli della città greca e romana, che si erge su alta roccia di lava, con bastioni a strapiombo sul mare. 
+La fortezza naturale della rocca del Castello domina i due approdi dell'isola, le insenature naturali di Marina Lunga e Marina Corta, e conserva le testimonianze del passato, essendo quasi ininterrottamente abitata da 6000 anni.
+L'acropoli di Lipari costituisce ancora oggi il punto focale del centro storico; all' interno sono conservate la statua argentea di S. Bartolomeo ed una tavola del seicento raffigurante la Madonna del Rosario. 
+Ancora più in fondo appare la chiesa della Madonna delle Grazie, chiusa al culto, che raccoglie diversi affreschi; il palazzo vescovile, del 1753, che è posto sul lato destro della cattedrale, è adibito a padiglione del museo.
+La necropoli greca di Lipari che si estende nella pianura di Diana sottostante la rocca del Castello, è una delle più ricche della Sicilia: trent'anni di scavi hanno recuperato i corredi di oltre 1750 tombe, ora esposti al Museo Archeologico Regionale Eoliano. 
+Quest'ultimo ha sede nel Castello e, creato nel 1954 da Luigi Bernabò Brea e Madeleine Cavalier, espone i reperti degli scavi condotti dal 1950 ad oggi a Lipari e nelle isole di Panarea, Salina, Filicudi e Stromboli. 
+La sezione del Museo Eoliano relativa alla preistoria dell'isola di Lipari occupa l'antico palazzo vescovile adiacente alla Cattedrale.
+La basilica concattedrale di San Bartolomeo è il principale luogo di culto di Lipari; sorge nel cuore della Cittadella ed è la più grande e antica delle chiese di Lipari. 
+Alla prima costruzione pagana, risalente all'età ellenica, seguirono diverse riedificazioni nelle epoche successive.
+La Chiesa Vecchia di Quattropani è il Santuario di Maria Santissima della Catena, antico luogo di culto eretto nella seconda metà del secolo XVI; questo divenne meta di molti pellegrinaggi, come documentano i registri delle preghiere che si trovano all'interno del Santuario.
+A nord dell'isola, è possibile visitare le cave di pietra pomice che sovrastano il mare e creano contrasti cromatici mozzafiato; il sito è divenuto Patrimonio dell'Umanità tutelato e sovvenzionato dall'Unesco perché rimanga immutato.
+
+\subsubsection{Diritto fondiario}
+Il territorio dell'isola di Lipari comprende il Sito d'Interesse Comunitario ITA030030 SIC "Isola di Lipari" che si estende su una porzione dell'isola pari a circa i 2/3 della superficie complessiva, ovvero 2.369 ha su 3.760 ha. Nel territorio dell'isola,e su quello delle altre cinque isole, amministrativamente costituenti il comune di Lipari, è stata istituita la Zona di Protezione Speciale ITA030044 ZPS "Arcipelago delle Eolie - area marina e terrestre" e sono in avanzato stato di definizione le procedure, ai sensi dell'art.4 della L.R.14/88, per l'istituzione di una nuova R.N.O. denominata "Isola di Lipari", già inserita nel Piano Regionale dei Parchi e delle Riserve, e un tempo costituita con D.A. n.970/91, provvedimento che venne successivamente annullato, a seguito di sentenza del TAR di Catania n.36895 del 23.01.95. 
+Inoltre, un'ampia porzione del suo territorio, prevalentemente nella parte occidentale dell'isola, seppur suddivisa in una zona di tutela propriamente detta e una zona di pretutela, è stata individuata quale area di interesse dall'UNESCO ai fini dell'iscrizione alla "World Heritage List" (WHL). 
+
+\subsubsection{Consumi energetici}
+% TODO
+
+\subsubsection{Produzione di energia}
+Dalla scheda tecnica energetica di Lipari si può osservare che la fonte principale di alimentazione
+è il gruppo elettrogeno diesel. La produzione elettrica tramite fonti fossili è molto maggiore ancora
+rispetto alla potenza prodotta da fonti rinnovabili che copre solo il 5\% di fabbisogno energetico dell'isola. Difatti si può osservare che per quanto riguarda
+l'energia prodotta dal vento, il cosiddetto eolico, non sono state installate ancora tecnologie che 
+sfruttano il vento per produrre energia elettrica per motivi legati soprattutto alla salvaguardia ambientale e a politiche paesaggistiche eccessivamente rigide. 
+Per quanto concerne il fotovoltaico, Lipari ha complessivamente una potenza installata di 508,89 kW. 
+Purtroppo a Lipari si è verificato anche uno spiacevole episodio legato all'impianto fotovoltaico realizzato a Monte Sant'Angelo che vantava il record per estensione tra tutte le isole minori del Mediterraneo. 
+Difatti la potenza installata era di 1120 chilowatt e serviva a fornire oltre il 20\% di energia necessaria a desalinizzare l'acqua e limitare l'importazione di olio combustibile di circa 3 volte. 
+Purtroppo la sua realizzazione non è mai stata completata comportando uno spreco di circa 31 milioni di euro che sarebbero dovuti servire come piano per abbattere l'emergenza idrica del paese. Per motivi di analisi costi-benefici infatti gli impianti di dissalazione sono stati progettati in base ai consumi invernali e non sono in grado di coprire i carichi estivi. 
+Un aumento della produzione da FER potrebbe comportare un aumento della capacità delle cisterne di stoccaggio di accumulare acqua potabile prodotta con l'energia in eccesso da fonti rinnovabili durante la stagione invernale, che potrebbe coprire l'aumento di domanda durante la stagione turistica. 
+Gli impianti di dissalazione possono azzerare la necessità di trasporto di acqua dalla terraferma e, inoltre, se abbinati a impianti di produzione di energia da fonti rinnovabili permetterebbero l'azzeramento, o quantomeno la riduzione, delle emissioni e la produzione di acqua dolce localmente. 
+Continuando il discorso sulle fonti rinnovabili si fa largo anche una possibile introduzione delle tecnologie che possono sfruttare il moto ondoso per produrre energia. 
+Sono stati già testati due prototipi nel dicembre del 2019
+sul molo di Marina Corta di Lipari e sono stati in grado di alimentarne i lampioni. 
+I sistemi cosiddetti 'a colonna d'acqua oscillante' (Oscillating water column - Owc) sono dispositivi per la produzione di energia dal moto ondoso costituiti da una struttura di cemento o acciaio, parzialmente sommersa, con una camera aperta al di sotto della superficie dell'acqua al cui interno rimane intrappolata l'aria che si trova al di sopra dell'acqua. 
+Il moto oscillatorio dell'acqua all'interno 
+dell'apparato, prodotto dal moto ondoso, crea un flusso d'aria che aziona una turbina accoppiata ad un generatore elettrico. 
+Il sistema, realizzato specificamente per le onde del Mar Mediterraneo, si innesca anche con onde basse, garantendo un'alta efficienza del sistema, che risulta quindi in attività per gran parte della giornata.
+
+\subsubsection{Disponibilità di FER}
+\subsubsection{Produttività da tecnologie FER}
+\subsubsection{Mercato energetico}
+Lipari essendo un'isola non interconnessa deve provvedere alla produzione energetica sul 
+territorio e per farlo utilizza principalmente gasolio che viene importato tramite navi cisterna, con inevitabili rischi ambientali connessi. 
+Oltretutto la conformazione stessa dell'isola e le avversità climatiche non rendono agevole la distribuzione e lo stoccaggio del carburante. 
+Se già dal punto di vista del rendimento, una centrale a gasolio è molto meno efficiente di una centrale a gas, la spesa aumenta notevolmente se si pensa che anche il trasporto fa si che il costo dell'energia sia notevolmente maggiore. 
+Non è un caso infatti se sulla terraferma la produzione di energia costi 3 volte meno rispetto a quanto accade su un isola. 
+Ragioni di equità sociale hanno portato verso un' equiparazione dei prezzi dell'elettricità nelle isole minori rispetto a quelli nazionali; nonostante le condizioni territoriali siano profondamente diverse, gli abitanti delle isole minori pagano l'elettricità quanto quelli sulla terraferma. 
+La compensazione tra i maggiori costi sostenuti dalle Aziende non coperti dai ricavi derivanti dalla vendita dell'energia elettrica è effettuata dalla Cassa per i Servizi energetici ambientali (CSEA). Questa spesa in più è sostenuta da ciascun consumatore che pagando la bolletta dell'elettricità in parte sta coprendo le spese per la distribuzione di energia elettrica nelle isole. 
+Nel 2019 si è stimato che circa lo 0,7\% della spesa media di un consumatore in energia elettrica era un contributo per diminuire i prezzi dell'energia nelle isole. 
+Una possibilità può essere quella di connettere le isole alla rete elettrica nazionale ma ciò comporterebbe spese elevatissime per le infrastrutture da realizzare che comunque dovrebbero rifornire un numero esiguo di abitanti (a fronte delle elevate spese). 
+A Lipari, ma come anche in altre isole minori non interconnesse, un'ulteriore difficoltà è quella dell'alta variabilità della domanda elettrica per l'alta variabilità della popolazione soprattutto a causa del turismo. 
+Un altro discorso dibattuto è che la separazione fisica determina una gestione indipendente delle reti, favorendo monopoli della produzione e distribuzione di energia con ricadute economiche e ambientali, a tal proposito Lipari è l'unica a non essere gestita da Enel e possiede una sua società denominata Società Elettrica Liparese (SEL). 
+
+\subsection{Contesto socio-culturale}
+\subsubsection{Storia coloniale, decoloniale, post-coloniale.}
+La storia di Lipari è una vicenda millenaria, che ha inizio con le popolazioni del paleolitico superiore quando, è pensabile che da lì qualche flotta si sia spinta oltre attraversando il breve tratto di mare che separa Capo Milazzo dalle isole Eolie (tratto lungo poco più di 20 chilometri); e abbia iniziato la colonizzazione delle stesse. 
+Ma è solo durante il Neolitico che si ha la conclamata certezza della presenza della cultura agricola, importata da gente che approda in Sicilia portandovi una civiltà di gran lunga più sviluppata rispetto  a quella delle popolazioni che vi avevano abitato fino a quel momento.  
+Questo fervore coloniale è giustificato dalla presenza di tante materie prime di notevole interesse per le civiltà maggiormente avanzate, in particolare al notevole uso dell'ossidiana. 
+Le popolazioni non usano più le grotte come abitazioni, ma costruiscono vere e proprie capanne, addensandosi in piccoli villaggi spesso fortificati. 
+I primi reperti storici di Lipari si trovano nella zona del "Castellaro Vecchio" presso la frazione di Quattropani, risalenti al IV millennio a.C., quando già in Sicilia queste ceramiche si trovavano nella loro fase evoluta.                                           
+L'avvento della metallotecnica comporta due fattori di impoverimento per Lipari e tutte le Eolie: il primo è la sostituzione dell'ossidiana con il bronzo più facilmente lavorabile, meno fragile e non dipendente da una singola fonte di approvvigionamento, e il secondo fattore consegue al miglioramento della marineria dotata di navi più moderne, che consentono di intraprendere navigazioni più lunghe e non più legate ai percorsi costieri o limitate agli spostamenti a vista. 
+Sfruttando la capacità di navigazione, la conformazione dell'arcipelago e la sua posizione geografica centrale rispetto al Mediterraneo; assunse però una posizione preponderante nel commercio dello stagno proveniente dalla lontanissima Cornovaglia. 
+Con l'avvento dei re italici, inizia un'età di guerre e di paure che trasforma completamente l'economia ed i comportamenti della popolazione a cui si aggiungono le eruzioni che provocarono una distruzione completa dei villaggi. 
+Questo Medioevo ante litteram, durerà cinque secoli sino all'avvento della colonizzazione greca che nel 580 a.C. ricostruiscono l'acropoli di Lipari. 
+I greci erano molto attratti dall'isola per due motivi principali: il primo, prettamente economico, fu determinato dalla presenza nell'isola di allume, utilizzato sin dall'antichità come fissante per colori ed il cui uso era quindi basilare nella tintura delle stoffe, il secondo motivo, di carattere politico, è stato lo sfruttamento della eccellente capacità marinaresca dei greci combinata con la posizione strategica dell'arcipelago al fine di contrastare la pirateria. 
+Tutto ciò durò fino al III secolo a.C. dove, a causa delle guerre puniche, si concluse il dominio della Grecia lasciando spazio al controllo romano e  l'isola perse nuovamente il suo ruolo centrale. Inoltre il II e I secolo a.C. furono dominati da numerosissime eruzioni vulcaniche. 
+Dopo l'avvento dell'imperatore Ottaviano, quindi durante tutto il primo periodo dell'Impero, fu di assoluta tranquillità per tutta la Sicilia e per Lipari in particolare. 
+Importante è invece l'influenza cristiana che si ebbe nei secoli a venire e che riecheggia ancora oggi nell'isola. Tutto ruota intorno alle vicende di Bartolomeo apostolo, morto decapitato in Albania negli anni delle rappresaglie contro i cristiani. 
+La comunità in fuga, raccolse il sarcofago con il corpo e si allontanò via mare; approdando dopo una violenta tempesta sulle coste di Lipari. 
+La popolazione liparese che, per la sua posizione defilata, non aveva subito persecuzioni importanti, fu ben lieta di accogliere nella sua terra il corpo di un santo. 
+Il sarcofago fu così portato nella zona che in quegli anni ospitava i raduni della comunità cristiana, subito fuori del paese dove oggi si può osservare la chiesa dedicata a San Bartolo extra moenia. 
+Con la legalizzazione della fede cristiana, le chiese divennero cattedrali ed anche a Lipari, la chiesa si spostò nel centro della città portando con sé anche le reliquie del santo. 
+A san Bartolomeo, si aggiunse nel periodo delle rappresaglie barbariche anche San Calogero che, stabilitosi in una zona impervia nella parte occidentale dell'isola (nei pressi della frazione Pianoconte, rimise in funzione le antiche terme di fattura greco-romana consentendo alla gente del luogo di sfruttarne le doti terapeutiche. 
+Da questo momento in poi, non si hanno più notizie, fino al 1084 quando entra a far parte del regno di Sicilia grazie a Ruggero, che fece costruire un monastero benedettino che potesse attirare attorno a sé un nucleo abitativo sufficientemente consistente per la eventuale difesa delle isole donando terre da coltivare ai contadini.
+
+\subsubsection{Storia culturale, sociale, politica.}
+Le tradizioni culturali dell'isola sono state molto influenzate dalla storia coloniale di quest'ultima. 
+A partire dall'influenza dei greci sia negli aspetti più culturali quali l'importazione delle pratiche mercantili, della lavorazione delle ceramiche; sia nella costituzione politico-sociale della città. 
+Infatti in questa epoca, viene impiantato il modello della polis; la quale, definita dalle mura difensive, vedeva la città suddivisa nella sua parte alta (acropoli) dove si trovavano i templi ed edifici pubblici; nell'agorà luogo dedicato ai mercati ed alle assemblee ed infine la parte bassa dove viveva la maggior parte della popolazione. 
+Lipari, per la sua conformazione territoriale, risultava proprio adatta all'inserimento di questo modello socio-politico.
+Di notevole importanza per molteplici punti di vista, risulta l'avvento del cristianesimo, che definisce la  nascita di quella tradizione religiosa di cruciale importanza soprattutto nei secoli a venire, dal tardo Medioevo in poi, dove il monastero costruito sull'isola con funzione di controllo, presto si impadronì anche del potere civile e ciò proseguì per quasi 800 anni.
+
+
+\paragraph*{Contesto politico e ambientale attuale.}
+Come già trattato in maniera approssimativa nei punti precedenti, il territorio di Lipari è di origine vulcanica ed è ricco di irregolarità e rilievi. 
+La sua bellezza paesaggistica e la ricchezza di specie naturali e animali hanno fatto sì che il territorio dell'isola è patrimonio Unesco dal 2000. 
+Oltre a ciò negli ultimi anni ci sono stati diversi finanziamenti volti a preservare il territorio come l'intervento del Ministro dell'Ambiente, oggi Mite, che ha investito 4,5 milioni di euro per le cause sopra citate.
+Il bando "Aree marine protette per il clima", analogamente al progetto 'Parchi per il clima' che è alla sua terza edizione, prevede finanziamenti per interventi di efficienza energetica del patrimonio immobiliare pubblico nella disponibilità dell'area marina protetta e a interventi per la realizzazione di servizi e infrastrutture di mobilità sostenibile terrestre e marina. 
+% TODO: Allegare la scheda ambientale sul pdf di legambiente 
+Un sito di interesse naturalistico è l'area marina di Punta Castagna, si trova a nord est di Lipari ed è un fondale sabbioso di 15-40 metri. 
+Per quanto riguarda la terraferma i territori invece di rilevante interesse naturalistico sono:
+\begin{enumerate}
+	\item La Vasta area che comprende Monte Sant'Angelo, Poggio dei Funghi, Vallone fiume Bianco, l'Anfiteatro di Monte Pelato, Rocche Rosse, Monte Chirica; 
+	\item Capistello;
+	\item Forgia Vecchia;
+	\item Le pareti di roccia della costa meridionale e gli isolotti di Pietra Lunga e Pietra Menala. 
+	\item Monte Mazza Caruso, Timpone Pataso, Timpone Ospedale (per approfondire prendere pdf unesco piano di gestione pagina 114).
+	\item L'area compresa fra Timpone Ricotta e Monte Mazza Caruso. 
+	\item  Pietra del Bagno.
+\end{enumerate}
+A livello politico va sottolineato il piano territoriale della provincia di Messina in cui si afferma che il territorio dell'isola di Lipari comprende il cosiddetto Sito d'Interesse Comunitario "Isola di Lipari" che si estende su una porzione dell'isola pari a circa i 2/3 della superficie complessiva, ovvero 2.369 ha su 3.760 ha. 
+Per definizione il SIC è una zona adibita alla preservazione della biodiversità dell'area di interesse. 
+Inoltre nel territorio dell'isola,e su quello delle altre cinque isole (Panarea,Vulcano, Stromboli, Alicudi e Filicudi) amministrativamente costituenti il comune di Lipari, è stata istituita la Zona di Protezione Speciale "Arcipelago delle Eolie - area marina e terrestre", ovvero una zona di protezione che comprende interamente il territorio di Lipari in corrispondenza delle rotte migratorie dell'avifauna nel mantenimento dell'habitat e per la conservazione e gestione della popolazione di uccelli selvatici migratori.
+Inoltre, un'ampia porzione del suo territorio, prevalentemente nella parte occidentale dell'isola, seppur suddivisa in una zona di tutela propriamente detta e una zona di pre tutela, è stata individuata quale area interesse dall'UNESCO ai fini dell'iscrizione alla "World Heritage List" (WHL), ovvero la lista dei patrimoni mondiali. 
+Oltretutto bisogna tenere conto anche dei siti archeologici e delle potenziali aree sottoponibili a ricerche di questo tipo. 
+Le attività edilizie infatti comportano un rischio dal punto di vista archeologico in particolare in alcune aree specifiche quali : Mendolita (una zona in cui sono state rinvenute delle necropoli), Piano Conte, terreni lungo la strada fra San Calogero e Piano Conte, Castellaro Vecchio (vi furono insediamenti preistorici). 
+Altre aree sono categorizzate come potenzialmente archeologiche e sono : Quattropani e Monte Giardina. (approfondire riserve naturali Lipari). 
+Anche il turismo può essere una fonte di rischio a livello ambientale e per questo la Legge 221/2015 ha istituito per i viaggiatori che approdano sulle Isole Minori l'obbligo di versare il contributo di sbarco, una forma di tassazione ambientale in sostituzione all'imposta di soggiorno normalmente applicata dai Comuni. 
+I proventi dovranno essere destinati a finanziare e sostenere la raccolta e lo smaltimento dei rifiuti, il recupero e la salvaguardia ambientale. 
+Sono presenti anche riserve naturali di notevole estensione, una di queste è sicuramente la Riserva naturale orientata Isola di Vulcano che, come suggerisce il nome, occupa gran parte del territorio dell'Isola di Vulcano. 
+Un discorso a parte deve essere fatto per l'eolico. 
+Essendo l 'isola ricca di siti protetti, aree naturali protette e dunque di vincoli paesaggistici è molto difficile riuscire a installare impianti eolici che sfruttano il moto dell'aria per produrre energia. 
+Molto spesso ci si è imbattuti infatti in una eccessivamente rigida legislazione che ha portato ad annullare progetti di eolico di fronte a ben poche evidenze scientifiche. 
+Dunque dal punto di vista politico ambientale non si è ancora giunti a una regolamentazione affine alle evidenze scientifiche sul basso impatto dell'eolico a livello di fauna e flora locale e non. 
+All'eolico sono poi posti problemi relativamente all'impatto visivo che la sua installazione comporterebbe e alla possibilità in particolare di perturbare l'habitat dell'avifauna che è sotto protezione tramite le già citate ZPS.
+
+\subsection{Modellazione energetica}
+\subsubsection{Scenari: ipotesi}
+\subsubsection{Scenari: risultati e indicatori}
+\subsection{Strategia di accesso al campo e posizionamento}
+Dalle evidenze derivanti dall'analisi delle fonti di energia trattate nel paragrafo precedente, e considerando i fattori ecologici ed antropologici;  di  seguito verrà presentato un prototipo di progetto per l'installazione di fonti di energia rinnovabile sull'isola di Lipari.
+
+\subsubsection{Portatori di interesse (potere decisionale, influenza, obiettivi)}
+Il principale fine di tale iniziativa, risulta essere l'installazione di diverse fonti di energia sull'isola rispettando il territorio e gli abitanti con le loro tradizioni culturali. 
+Infatti bisogna tener conto delle zone che eventualmente possono essere adibite, e possono sostenere, l'installazione dei sistemi scelti.
+Per quanto concerne il solare, che rappresenta la fonte energetica rinnovabile maggiormente efficiente, di rilevante importanza risulta essere l'aspetto territoriale ed ambientale. 
+Questo perché bisogna considerare lo spazio che verrà destinato ai pannelli solari. 
+Dai dati ottenuti, si evince che per produrre tutta l'energia su descritta, si ha bisogno di un'area di circa $200000 m^2$. 
+Questi vanno ricercati in zone prevalentemente pianeggianti, lontane dai centri abitati e riserve protette. 
+Data la natura vulcanica dell'isola, non esistono territori esattamente pianeggianti, o se esistono sono stati occupati dalle abitazioni e dalle coltivazioni. 
+Per questo abbiamo pensato che la zona più adatta sarebbe in prossimità della costa "Punta del cogno lungo" per evitare anche la vicinanza ai vulcani. 
+In più, allontanando così la zona dedicata al solare dalle riserve naturali, si protegge la biodiversità del territorio.
+A questo punto è evidente che la maggior influenza all'interno del progetto è data dagli enti finanziatori che sovvenzioneranno l'iniziativa e dal comune che dovrebbe cercare di coinvolgere e amalgamare l'opinione pubblica, gli ambientalisti con i profitti e i vantaggi sia economici che ambientali.
+
+\subsubsection{Legittimità e riconoscimento (pratiche, comportamenti e protocolli)}
+\subsection{Conclusioni}
+\subsubsection{Limiti e opportunità}
+\subsubsection{Analisi delle opzioni}
+\section{Comparazione}
+\subsection{Contesti}
+\subsection{Contaminazioni reciproche}
+
+% Appendice
+\newpage % TODO: Rimuovi questo \newpage, potrebbe non essere necessario
+
+\section{Appendice}
+
+\subsection{Dalla risorsa allo sviluppo del modello elettrico}
+
+% Comandi per la parte dell'algoritmo genetico
+\newcommand{\vcutin}{v_{\text{cut\_in}}}
+\newcommand{\vcutout}{v_{\text{cut\_out}}}
+\newcommand{\vrated}{v_{\text{rated}}}
+
+Dopo un'attenta analisi dei dati ottenuti dai software PVGIS ed ERA5, ovvero delle risorse messe a
+disposizione dalle isole in termini di irradianza, velocità del vento e periodo e altezza d'onda, il
+primo passo consiste nell'ottenere la produttività delle relative tecnologie (fotovoltaico, turbina
+eolica e convertitori del moto ondoso) espressa in termini di Capacity Factor (CF).
+\begin{equation}
+	\text{CF} = \frac{\text{Potenza prodotta dall'impianto}}{\text{Potenza installata}}
+	\label{eq:cf}
+\end{equation}
+Dalla formula \ref{eq:cf} si ottiene il CF di quella tecnologia in quella data ora. \\
+Per quanto riguarda il fotovoltaico è utilizzato il tool PVGIS, il quale, una volta inserite le
+coordinate isola, un anno di riferimento (si è scelto il 2019), impostati gli angoli di inclinazione del
+pannello (i valori sono scelti dal tool al fine di ottimizzare l'esposizione) e fornito un valore base di
+potenza installata, restituisce in output un file csv che indica per ogni ora dell'anno la potenza
+prodotta dato un impianto con le caratteristiche specificate. 
+Il Capacity Factor per ogni ora dell'anno è dato dal rapporto tra potenza prodotta e installata. \\
+Nel caso del vento occorre fare un'osservazione preliminare:
+la turbina eolica in base alla velocità del vento può essere caratterizzata da quattro settori di
+funzionamento: \\ 
+\begin{figure}[H]\centering
+	\begin{tikzpicture}
+		\begin{axis}[ yshift = 1cm,
+			grid=both,
+			axis lines = left,
+			xlabel = \(v_{\text{vento}}\),
+			ylabel = {$P$},
+			xmin = -1,
+			xmax = 30,
+			ymin = -100000,
+			ymax = 7000000,
+		]
+			\addplot[line width = 0.5mm, blue] table [x=wind, y=energy, col sep=comma] {PlotsData/wind_energy.csv};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Potenza prodotta da una turbina di $6 \text{MW}$}
+	\label{fig:results}
+\end{figure}Per valori inferiori a \(\vcutin\) e superiori a \(\vcutout\), la potenza prodotta è nulla. \\
+Tra \(\vcutin\) e \(\vcutout\), c'è un periodo di transizione, nel quale vale la seguente formula: \\
+\(P_{\text{prodotta}} = \frac{1}{2} A_{\text{pale}} \cdot \rho_{\text{aria}} \cdot c_p \cdot v(t)^3 \) \\
+Dove \(A_{\text{pale}}\) è l'area del cerchio generata dalle pale eoliche, \(\rho_{\text{aria}}\) è la densità dell'area, \(v(t)^3\) la velocità del vento, \(c_p\) il power coefficent, specifico della turbina eolica. \\
+Invece, per \(\vcutout > v(t) > \vrated\), la potenza prodotta si satura, e rimane costante. \\
+% Differenze formula-simulazione: in basso l'equazione tende a 0 per $v$ che tende a 0, mentre la simulazione tende a zero per $v$ che tende a \(\vcutin\), sotto quella minima velocità la turbina non riesce a produrre; 
+% in alto la nostra equazione tende a $+\infty$ all'aumentare di $v$, già per valori minori a $v_{\text{rated}}$, tuttavia, il grafico si discosta leggermente dalla simulazione, ma per il nostro progetto sono aspetti trascurabili. \\
+Scegliendo una turbina, si fissa la potenza installata (taglia della turbina), insieme ai valori di
+$v_{\text{cut\_in}}$, $v_{\text{rated}}$, $\vcutout$ e $c_p$. 
+Per ogni ora, a seconda della regione in cui si trova la velocità del vento ricavata dal software ERA5 (data le coordinate del luogo e l'anno di riferimento), si applica la relativa formula per calcolare la potenza prodotta dalla turbina. 
+Il valore ottenuto è diviso per la potenza installata, così ottenendo il CF della turbina. \\
+% Si sono calcolati due valori differenti di Capacity factor, uno per la turbina ONSHORE, uno per la turbina OFFSHORE. \\
+Per la tecnologia WEC, per calcolare il CF non è stata utilizzata la matrice delle occorrenze, di norma usata per la scelta del dispositivo ottimale, ma si è scelto un dispositivo campione, e se ne è usata la matrice di potenza. 
+Questa approssimazione non è rilevante ai fini della nostra analisi. \\
+Tramite la matrice di potenza, quindi, a ogni coppia di valori di $h$ e $T$ è associata la potenza prodotta del dispositivo in una data ora.
+Per semplicità non è stato preso in considerazione il parametro della direzione dell'onda. \\
+Dopo aver ricavato la potenza massima che il dispositivo sarebbe in grado di produrre dalla matrice (valore massimo tra le produttività caratteristiche dei vari stati di mare per quel dato dispositivo) per ogni ora per ottenere il CF si divide la potenza prodotta per la potenza massima:
+\begin{equation}
+	\text{CF}_\text{WEC} = \frac{M_{hT}}{\text{max}\{M\}}
+\end{equation}
+Dove $M$ è la matrice di potenza.\\ 
+La scelta di utilizzare la potenza massima e non quella installata è dovuta al fatto che, a differenza delle altre due tecnologie precedentemente analizzate, nel WEC è possibile che la potenza installata risulti essere di gran lunga più grande di quella prodotta, e, di conseguenza, per non lavorare con valori di CF molto piccoli, si sceglie di rapportare il CF alla potenza massima prodotta anziché a quella installata. \\
+Una volta calcolati i CF a ogni ora dell'anno per tutte le tecnologie è fondamentale andare a considerare i consumi effettivi delle due isole.
+Idealmente sarebbe necessario poter conoscere per ogni ora dell'anno quanta elettricità è stata consumata sull'isola. Tuttavia, questa tipologia di dati è spesso non facile da ottenere in quanto richiede la maggior parte delle volte di interloquire con enti privati, difficilmente propensi a fornirli, sia per ragioni confidenziali, sia per motivi di puro interesse.
+Viene quindi utilizzata una curva di consumo standard, che riporta per ogni ora dell'anno un coefficiente normalizzato del consumo dell'isola. Riscalando la curva standard e sfruttando il valore di consumo di energia in un anno dell'isola (ricavato dal bando delle isole Verdi PNRR per Lipari e dal sito STSEE per Wallis) si ottiene una buona approssimazione del consumo ora per ora. \\
+\begin{figure*}[ht]\centering
+	\begin{tikzpicture}
+		\begin{axis}[ 
+			yshift = 1cm,
+			grid=both,
+			axis lines = left,
+			xlabel = {Mese},
+			ylabel = {Consumo Normalizzato},
+			date coordinates in=x,
+			date ZERO=2019-01-01,
+			table/col sep=comma,
+			xticklabel=\month,
+			width=17cm,
+			height=10cm,
+		]
+			\addplot[line width = 0.13mm, blue] table [
+				x=time, 
+				y=power,
+				col sep=comma,
+			] {PlotsData/energy_consumption.csv};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Curva di consumi normalizzata}
+	\label{fig:consumption}
+\end{figure*}
+% Una volta noti tutti i dati di produttività e consumi si può finalmente passare alla progettazione del modello elettrico per l'isola. 
+Infine, è necessario introdurre ancora un elemento di cruciale importanza nel progetto: gli accumulatori. 
+Questi, infatti, non solo permettono di conservare l'energia prodotta in eccesso e di restituirla quando necessario, permettendo così alla curva della produttività di approssimare meglio la curva dei consumi, ma sono anche fondamentali per la stabilità della rete.
+Come tecnologia si sceglie quella a ioni di litio. \\
+Di tutti i parametri caratteristici dell'accumulatore, ai fini del nostro modello, vengono presi in
+considerazione la capacità massima utilizzabile (espressa in MWh) e l'efficienza.
+Per questo ultimo parametro in particolare si fa, per semplicità, solo una distinzione tra le fasi di carica e scarica, senza tuttavia tenere conto del fatto che l'efficienza può variare a seconda della percentuale di carica dell'accumulatore e della potenza che deve essere caricata o fornita. \\
+% Nell'immagine seguente è illustrato il modello di funzionamento in formule.\\
+% ** Modello di funzionamento in formule ** 
+Raccogliendo i dati ottenuti, si ricava una tabella come quelle riportate in apppendice, dove figurano, supposti noti i valori delle potenze installate per ogni tecnologia e la capacità massima degli accumulatori, i Capacity Factor e le relative potenze prodotte per le singole tecnologie, i consumi, lo stato di carica degli accumulatori e la necessaria produzione di diesel per ogni ora dell'anno. % TODO: AGGIUNGERE IN APPENDICE LE TABELLE
+Da questi, sono poi calcolati i valori caratteristici annuali (medi per quanto riguarda il CF e lo stato di carica e totali per la produzione e il consumo).
+Conoscendo i valori della produzione di diesel e del consumo totale è quindi possibile calcolare la penetrazione delle FER in rapporto al totale di energia consumata:
+\begin{equation}
+	\%_\text{FER} = 100 \cdot \left(1 - \frac{E_{\text{Diesel}}}{E_{\text{Consumata}}}\right)
+\end{equation}
+A questo punto, per conferire concretezza al modello, è necessario introdurre il fattore costi.
+I costi delle singole tecnologie sono calcolati a partire dai CAPEX (Costi capitali di installazione della tecnologia), dagli OPEX (Costo di manutenzione della tecnologia) e dalle produttività nel tempo di vita, tenendo anche conto del discount rate \(r\) (dal momento che i prezzi subiscono variazioni col passare del tempo), in modo da ricavare, per ogni tecnologia, il suo LCOE, valore che fornisce l'informazione sul costo di un MW di potenza installata.
+Di seguito i valori utilizzati per le varie tecnologie e la formula usata per il calcolo dell'LCOE, dove \(E\) è l'energia consumata in un anno, e \(n\) il numero di anni di vita attesi della tecnologia: 
+\begin{equation}
+	\text{LCOE} = P_\text{inst} \cdot \frac{\frac{\text{CAPEX}}{1+r} + \sum\limits_{t=1}^n \frac{\text{OPEX}}{(1+r)^t}}{\sum\limits_{t=1}^n \frac{E}{(1+r)^t}}
+	\label{eq:lcoe}
+\end{equation}
+% Dal momento che si è a conoscenza della produttività annuale, al fine del calcolo, è stata usata questa approssimazione %** approssimazione**.
+Si è preferito il calcolo dell'LCOE rispetto al semplice utilizzo del CAPEX, che dà un'informazione abbastanza valida solo se riferita a scenari di breve termine, in quanto interessati in un'analisi un po' più a lungo termine in cui, a fronte di un valore alto del CAPEX, può anche corrispondere un valore di LCOE non altrettanto elevato essendo il primo ammortizzato negli anni.
+Per il WEC, trattandosi di una tecnologia innovativa, e quindi non avendo sufficienti dati sperimentali per avere valori precisi di OPEX, è stata presa, come di valore di riferimento, una percentuale del capex (il $3\%$).
+Per quanto riguarda gli accumulatori invece il costo dipende da due aspetti: la capacità in termini di energia immagazzinata e la capacità in termini di potenza massima. Mentre il primo valore è libero, il secondo può essere calcolato prendendo il valore massimo tra le potenze medie orarie scambiate dall'accumulatore. \\
+I valori usati sono come segue\cite{IRENA:RenewPowerGen} \cite{OEE:2030Ocean} \cite{OCT:DevelopmentReport}: \\
+\begingroup
+\renewcommand{\arraystretch}{1.25}
+\begin{table}[H]
+	\caption{Valori finanziari}
+	\centering
+	\begin{tabular}{llc}
+		\toprule
+		Parametro & Valore & Unità di misura \\
+		\midrule
+		CAPEX Solare & $830$ & $\SI{}{\EUR\per\kW}$ \\
+		OPEX Solare & $13$ & $\SI{}{\EUR\per\kW}$ \\
+		CAPEX WEC & $5750$ & $\SI{}{\EUR\per\kW}$ \\
+		OPEX WEC & $13$ & $\SI{}{\EUR\per\kW}$ \\
+		CAPEX Eolico & $2993$ & $\SI{}{\EUR\per\kW}$ \\
+		OPEX Eolico & $172$ & $\SI{}{\EUR\per\kW}$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:finparameters}
+\end{table}
+\endgroup \phantom{a} \\
+Giunti a questo punto, l'obiettivo è quello di trovare la combinazione di FER, ognuna col suo profilo di produttività, che permetta nell'insieme di approssimare al meglio la curva dei consumi.
+Non si può decidere la curva di produttività di una tecnologia, ma si possono decidere quante e quali tecnologie installare. \\
+
+\subsection{Ottimizzazione}
+Una volta determinate le tecnologie potenzialmente installabili sulle due isole, e stabilito un metodo per stimarne i costi annuali, il prossimo passo è cercare la combinazione di FER ottimale per le isole studiate, in modo da minimiazzare i costi, approssimare al meglio la curva di consumi, e sfruttare al massimo le risorse locali. \\
+Dal punto di vista matematico, è possibile sintetizzare il problema in tale modo: a nostra disposizione abbiamo quattro parametri che descrivono il nostro progetto, ovvero la potenza installata in termini di solare, eolico e WEC; e da questi quattro parametri possiamo ricavare un valore, che rappresenta la bontà del progetto.
+Ci sono diversi valori che possono essere scelti come rappresentativi del progetto, ma per questo studio si è scelto il costo annuale stimato di produrre energia per tutta l'isola.
+Questo valore sintetizza al meglio le esigenze prima descritte, poiché:
+\begin{itemize}
+	\item è possibile associare un costo alla produzione di energia non rinnovabile, che non deve essere necessariamente realistico, dal momento che in caso il risultato dell'ottimizzazione preveda una percentuale di FER utilizzata non accettabile, si può aggiungere a questo costo una \textit{carbon tax}, ovvero una tassa artificiale dovuta alla natura non sostenibile del produrre energia tramite fonti non rinnovabili,
+	\item usando il costo dell'energia prodotta, e non di quella effettivamente consumata, progetti che sprecano troppa energia (producendone più di quanta ne è necessaria e ne è possibile immagazzinare in ogni dato momento) vengono naturalmente svantaggiati dal dover pagare anche l'energia sprecata,
+	\item visto che il consumo viene valutato per tutto l'anno, in caso un tipo particolare di produzione non riesca a produrre per un dato periodo dell'anno, altre tecnologie che invece sono più produttive in quel periodo dell'anno vengono incentivate anche in caso non siano più vantaggiose in media. % TODO: Riscrivere meglio
+\end{itemize}
+Riassumendo, si vuole trovare il minimo della funzione \\ $f: D \to \mathbb{R}^+$ definita come:
+\begin{equation}
+\begin{array}{cl}
+	f (P_w, P_e, P_s, E_a) = \\
+		\text{LCOE}_r(P_w, P_e, P_s, E_a) \cdot E_\text{prodotta} + C_d \cdot E_d(P_w, P_e, P_s, E_a)
+\end{array}
+\end{equation}
+dove $\text{LCOE}_r$ è la somma degli LCOE di tutte le tecnologie utilizzate, in funzione delle loro potenze o capacità installate, $E_\text{prodotta}$ è l'energia prodotta da esse, $C_\text{d}$ è il costo del diesel, stimato a Wallis come $\SI{510}{\EUR\per\MWh}$ [CIT] e a Lipari come $\SI{390}{\EUR\per\MWh}$, $E_d$ l'ammontare di energia prodotta dal diesel, e $D$ è l'insieme quadridimensionale, che è il prodotto cartesiano degli intervalli di quanta potenza è potenzialmente installabile di ogni tipologia di energia, e di quanti accumulatori è possibile installare sull'isola, che calcola il costo annuale dell'energia.
+A tal scopo, si è impiegato un algoritmo genetico.
+\subsubsection{Algoritmo Genetico}
+Lo scopo dell'algoritmo è trovare i parametri che minimizzano (o massimizzano) il valore di una data funzione.
+Per fare ciò, l'algoritmo esegue 4 diverse fasi: \\
+\begin{tikzpicture}[node distance=2cm]
+	\node (start) [phase] {Setup};
+	\node (survival) [phase, right of=start] {Selezione};
+	\node (crossover) [phase, right of=survival] {Crossover};
+	\node (mutation) [phase, right of=crossover] {Mutazione};
+
+	\draw [arrow] (start) -- (survival);
+	\draw [arrow] (survival) -- (crossover);
+	\draw [arrow] (crossover) -- (mutation);
+	\draw [arrow] (mutation) |- node[below of=crossover]{} ++(-1,1) -- node{} ++(-3,0) -- (survival);
+\end{tikzpicture}
+
+% GA specific commands
+\newcommand{\vI}{\vec{I}}
+
+\subsubsection{Setup}
+Un insieme di \(n\) tuple ordinate viene inizializzato con valori casuali, uniformi in un sottoinsieme arbitrario di \(D\). 
+Le singole tuple rappresentano un progetto di prova, e sono chiamate individui \(\vI^{(0)}_i\), mentre l'insieme viene chiamato la popolazione \(P_0\).
+
+\subsubsection{Selezione}
+Per ogni individuo della popolazione, ne viene calcolata la funzione \(f\) definita prima, chiamata la funzione di fitness.
+Questa funzione rappresenta la bontà del progetto, ed è quella il quale output si vuole minimizzare.
+Fatto ciò, si ordina l'insieme \(P_g\) in ordine di valore di \(f(\vI^{(g)}_i)\) crescente, e si cerca il valore \(\vI^{(g)}_m\) mediano, ovvero l'individuo che divide a metà la popolazione. \\
+Si costruisce dunque l'insieme \(P^s_g\), composto da elementi selezionati randomicamente da \(P_g\).
+Gli individui tali per cui \(f(\vI^{(g)}_i) > f(\vI^{(g)}_m)\) scelti per con probabilità \(p_s\), mentre tutti gli altri vengono scelti con probabilità \(p_e\).
+Queste due probabilità vengono scelte arbitrariamente, e sono parametri della simulazione. 
+\(p_e\) rappresenta la probabilità che un individuo che non sarebbe in grado di sopravvivere sopravviva, mentre \(p_s\) è la probabilità che un individuo sopravviva.
+È necessario rendere queste occorrenze casuali per poter permettere all'algoritmo di non bloccarsi su eventuali minimi locali, e quindi di riuscire correttamente ad approssimare il minimo globale.
+
+\subsubsection{Crossover}
+In questa fase, vengono creati nuove tuple, per costruire un terzo insieme \(P^c_g\), di numerosità \(m = n - \#(P^s_g)\).
+Per fare ciò, vengono scelte randomicamente \(m\) tuple ordinate di due elementi, presi da \(P^s_g\), e vengono creati nuovi individui, i cui primi due parametri sono presi dal primo elemento della tupla, e gli ultimi due parametri sono presi dal secondo elemento della tupla.
+
+\subsubsection{Mutazione}
+Viene definito il nuovo insieme \(P_{g + 1}\), che sarà il punto di partenza per la prossima iterazione della simulazione.
+Questo nuovo insieme contiene tutti gli elementi di \(P^s_g\), e una versione modificata di ogni elemento di \(P^c_g\), nella quale ad ognuno dei parametri di ogni singolo individuo viene aggiunta una componente casuale \(X\), distributa uniformemente nell'insieme \([-M_a, M_a]\).
+
+\subsubsection{Terminazione dell'algoritmo}
+L'algoritmo viene terminato una volta processate \(N\) generazioni, o una volta che, dopo dieci generazioni, la fitness del miglior individuo della popolazione non sia variata di più di un valore \(\varepsilon\) di tolleranza.
+
+\subsubsection{Risultati}
+Per le simulazioni, sono stati usati come parametri:
+\begin{equation*}
+	\begin{array}{ll}
+		n = 1000 \\
+		N = 5000 \\
+		\varepsilon = 0.1 \\
+		p_e = 5\% \\
+		p_s = 95\% \\
+		M_a = \SI{100}{\kW} \\
+	\end{array}
+\end{equation*}
+Di seguito viene riportato un esempio di simulazione, utilizzando i dati dell'isola di Lipari, e non imponendo restrizioni su \(D\):
+% TODO: Inserire esempio
+
+% Dunque, scelte tutte le tecnologie potenzialmente installabili sulle due isole, dati i valori caratteristici calcolati precedentemente (produzione, consumo, costo), al fine di trovare la migliore combinazione di FER (nello specifico i valori delle potenze installate per ogni tecnologia e la capacità degli accumulatori) è stato usato un algoritmo genetico che ha i seguenti obiettivi:
+% \begin{enumerate}
+% 	\item massimizzare la potenza prodotta
+% 	\item approssimare al meglio la curva dei consumi
+% 	\item minimizzare i costi
+% \end{enumerate}
+% % ** descrizione algoritmo **
+% L'algoritmo ha prodotto i seguenti risultati: % ** risultati** 
+% Questa soluzione puramente ingegneristica deve tuttavia andare necessariamente incontro ad un'analisi di tipo ecologico, antropologico e legislativo che ne validi i risultati o che metta in evidenza limitazioni e problemi che permettano di ridiscutere il modello in modo da ottenere alla fine la soluzione che garantisce un perfetto bilancio tra i vari fattori in gioco.
+
+% Bibliografia
+\phantomsection
+\bibliographystyle{unsrt}
+\bibliography{citations.bib}
+
+\end{document}
